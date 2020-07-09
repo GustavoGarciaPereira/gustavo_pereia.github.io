@@ -18,7 +18,7 @@ gustavo letrar de programação
 
 Como é descrito muito bem no gif, minha principal motivação par fazer um site proprio é codar,
 testar coisas novas, e treinar para estar preparador para ser um codigicador no dia-a-dia.
-E com o github-pages, que é um presente para a humanidade, vamos aproveitar para fazermos os nos portifolios e nos promovermos, hahahh, vamos aproveitar.
+E com o github-pages, que é um presente para a humanidade, vamos aproveitar para fazermos os nos portifolios e nos promovermos, hahahh, vamos aproveitar
 
 
 
