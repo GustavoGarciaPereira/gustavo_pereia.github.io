@@ -1,6 +1,21 @@
-# gustavo_pereia.github.io
-meu site pessoal
+# meu pequeno site pessoal
+
 
 
 # link da acessar o site
-https://gustavogarciapereira.github.io/gustavo_pereia.github.io/
+pode ser acessado [aqui](https://gustavogarciapereira.github.io/gustavo_pereia.github.io/)
+
+
+```bash
+gustavo letrar de programação
+```
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+```bash
+pip install foobar
+```
+
+
