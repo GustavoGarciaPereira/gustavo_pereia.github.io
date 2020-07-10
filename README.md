@@ -7,10 +7,10 @@ pode ser acessado [aqui](https://gustavogarciapereira.github.io/gustavo_pereia.g
 
 
 ```bash
-gustavo letrar de programação
+gustavo letras de programação
 ```
 ```zsh
-gustavo letrar de programação
+gustavo letras de programação
 ```
 
 ### Motivação para fazer um site
