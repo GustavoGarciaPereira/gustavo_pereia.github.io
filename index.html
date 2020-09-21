@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet"> 
 
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
     <style>
         .fonte{
             font-family: 'Indie Flower', cursive;
@@ -26,13 +26,51 @@
             padding-top: 12px;
             padding-bottom: 32px;
         }
+        .fa{
+            font-size:48px;
+            padding-left: 46px;
+            padding-right: 46px;
+            text-decoration: none;
+            
+        }
+
+        a:link, a:visited{
+            color:rgba(43, 26, 141,0.5);
+        }
+
+        a:hover{
+            color:rgb(15, 11, 11);
+        }
+        #tecnologias{
+            padding-top: 48px;
+        }
+        a:link{
+            text-decoration:none;
+        }
+        .btn{
+            color:rgba(194, 50, 105, 0.5);
+            
+            border-color: rgba(15, 11, 11, 0.4);
+        }
+        .btn:hover{
+            background-color: rgba(255, 0, 0, 0.4);
+            border-color: rgba(255, 0, 0, 0.4);
+        }
+        .btn:link{
+            background-color: rgba(15, 11, 11, 0.4);
+            border-color: rgba(15, 11, 11, 0.4);
+        }
+        
 
     </style>
     <title>Gustavo GP</title>   
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand fonte" style="font-size:40px;" href="#">G</a>
+        <a class="navbar-brand fonte" style="font-size:40px;" href="https://github.com/GustavoGarciaPereira">
+            <i class="fa fa-github-square" style="font: size 30px"></i>
+        </a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,7 +83,6 @@
         </div>
     </nav>
     <div class="container">
-        <h1>gustavo</h1>
         <a href="https://github.com/GustavoGarciaPereira" target="_blank">
             <img style="border-radius: 15px;" src="https://avatars2.githubusercontent.com/u/19331198?s=400&u=0855a44ed36627d3d097e9db7173d3d9b147d363&v=4" 
             alt="Foto de perfil usada na minha conta do github">  
@@ -53,7 +90,7 @@
         </a>
     
         <ol>  
-            <a href="#bio">
+            <a id='d' href="#bio">
                 <li>
                     <p>bio</p>
                 </li>
@@ -74,7 +111,21 @@
         <h1 id="bio">Meu nome é Gustavo Garcia Pereira!</h1>
         <p>Faço ciência da computação, este simples site tem como objetivo</p>
         <p>Aprimorar minhas habilidades de escrita e de construção de páginas WEB</p>
-    
+        
+        <div id="tecnologias">
+            <a href="#contato">
+                <i class="fa fa-html5"></i>
+            </a>
+            <a href="#contato">
+                <i class="fa fa-css3"></i>
+            </a>
+            <a href="#contato">
+                <i class="fa fa-linkedin-square"></i>
+            </a>
+            
+            
+            
+        </div>
     </br>
     </br>  
     
