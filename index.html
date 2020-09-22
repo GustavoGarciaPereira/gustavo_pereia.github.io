@@ -8,6 +8,21 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
     <style>
+
+        main{
+            position: relative;
+            left: 200px;
+        }
+        #imagem-principal-img{
+            position: relative;
+            left: 880px;
+            top: 30px;
+        }
+        .container{
+            position: relative;
+            bottom: 330px;
+        }
+
         .fonte{
             font-family: 'Indie Flower', cursive;
         }
@@ -60,7 +75,34 @@
             background-color: rgba(15, 11, 11, 0.4);
             border-color: rgba(15, 11, 11, 0.4);
         }
-        
+
+        @media screen and (max-width: 600px) {
+            #imagem-principal-img{
+                position: relative;
+                height: 100px;
+                width: 100px;
+                top: 70px;
+                left: 280px;
+            }
+            .apresentacao{
+                position: relative;
+                top: 320px;
+            }
+            main{
+                position: relative;
+                top: 320px;
+                left: 50px;
+            }
+            footer{
+                position: relative;
+                right: 200px;
+            }
+
+
+            
+        }
+
+
 
     </style>
     <title>Gustavo G.Pereira</title>   
@@ -82,126 +124,131 @@
           </div>
         </div>
     </nav>
-    <div class="container">
-        <a href="https://github.com/GustavoGarciaPereira" target="_blank">
-            <img style="border-radius: 15px;" src="https://avatars2.githubusercontent.com/u/19331198?s=400&u=0855a44ed36627d3d097e9db7173d3d9b147d363&v=4" 
+    
+        <a id="imagem-principal" href="https://github.com/GustavoGarciaPereira" target="_blank">
+            <img id="imagem-principal-img" style="border-radius: 85px;" src="https://avatars2.githubusercontent.com/u/19331198?s=400&u=0855a44ed36627d3d097e9db7173d3d9b147d363&v=4" 
             alt="Foto de perfil usada na minha conta do github">  
         
         </a>
-    
-        <ol>  
-            <a id='d' href="#bio">
-                <li>
-                    <p>bio</p>
-                </li>
-            </a>
-    
-            <a href="#tecnologia">
-                <li>
-                    <p>tecnologia</p>
-                </li>
-            </a>
-            <a href="#contato">
-                <li>
-                    <p>Contado</p>
-                </li>
-            </a>
-        </ol>
+        <div class="container">
+
         
-        <h1 id="bio">Meu nome é Gustavo Garcia Pereira!</h1>
-        <p>Faço ciência da computação, este simples site tem como objetivo</p>
-        <p>Aprimorar minhas habilidades de escrita e de construção de páginas WEB</p>
-        
-        <div id="tecnologias">
-            <a href="#contato">
-                <i class="fa fa-html5"></i>
-            </a>
-            <a href="#contato">
-                <i class="fa fa-css3"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/gustavo-garcia-pereira-078240143" target="_blank" rel="noopener noreferrer">
-                <i class="fa fa-linkedin-square"></i>
-            </a>
-            
-            
-            
-        </div>
-    </br>
-    </br>  
-    
-        <h2 id="tecnologia">Linguagens e tecnologias que trabalho</h2>
-        <p>Linguagem Python com o frameworke Django</p>
-        <p>Já trabalhei tambám com C# com MVC5</p>
-        <p>Banco de dados Mysql, Postgre e Sqlserver</p>
-        <p>Atualmente trabalho com Postgre</p>
-        <p>E consegio entegra o esperimento no meu site</p>
-        <iframe style="width: 500px; height: 300px;" frameborder="0" src="https://embed.molview.org/v1/?mode=balls&cid=3014488">
-        </iframe>
-    
-        <br>
-        <br>
-    
-        <a class="btn btn-primary" href="http://molview.org/?cid=3014488" target="_blank">
-            Para Saber mais No Site molview
+<div class="apresentacao">
+    <ol>  
+        <a id='d' href="#bio">
+            <li>
+                <p>bio</p>
+            </li>
         </a>
+
+        <a href="#tecnologia">
+            <li>
+                <p>tecnologia</p>
+            </li>
+        </a>
+        <a href="#contato">
+            <li>
+                <p>Contado</p>
+            </li>
+        </a>
+    </ol>
     
-        <br>
-        <br>
-
-        <h2>Livros Que Ando Lendo</h2>
-
-        <p class="titulo-livro">TED Talks: O guia oficial do TED para falar em público</p>
-        <img src="https://images-na.ssl-images-amazon.com/images/I/417BOtbafUL._SX346_BO1,204,203,200_.jpg" alt="capa do livro ted Talks">
-        <p>Começei a ler recentemente, mais precisamente hoje 06-07-2020 kkkk</p>
-        <p>Quando terminar de ler virei aqui para contar</p>
-
-        <h2>Livros Que Ando Lendo</h2>
-
-        <p class="titulo-livro">Fahrenheit 451</p>
-        <img src="https://images-na.ssl-images-amazon.com/images/I/41qwit8V+sL._SX331_BO1,204,203,200_.jpg" alt="capa do livro Fahrenheit 451">
-        <p>Livro incrível quase não tenho palavras para descrever sua </p>
-        <p>incrível e apaixonante história. </p>
-        <p>quem é apaixonado por livros provavelmente vai se identificar</p>
-        <p>mais com o drama desse mundo!</p>
-        <p>mas o mais fantástico, é que você depois de ler, reconhece a importância</p>
-        <p>que tem ter um livro</p>
-        <p>e como é importante preservar a conquistas e conhecimen</p>
-        <p>e tão importante quanto guardar o conhecimento e as conquistas</p>
-        <p>é guardar quando falhamos, quando dá tudo errado.</p>
-        <p>guardar para as próximas gerarçẽos, é guardar a certeza de que não </p>
-        <p>repetiremos os nossos erros</p>
-        <p>gustavo</p>
-
-        <p></p>
-
-
+    <h1 id="bio">Meu nome é Gustavo Garcia Pereira!</h1>
+    <p>Faço ciência da computação, este simples site tem como objetivo</p>
+    <p>Aprimorar minhas habilidades de escrita e de construção de páginas WEB</p>
     
-
+    <div id="tecnologias">
+        <a href="#contato">
+            <i class="fa fa-html5"></i>
+        </a>
+        <a href="#contato">
+            <i class="fa fa-css3"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/gustavo-garcia-pereira-078240143" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-linkedin-square"></i>
+        </a>
     </div>
-    
 
-    <footer>
-        <div class="p-4">
-            <h4 class="font-italic">Meu contato</h4>
-            <ol class="list-unstyled">
-              <li><a href="https://github.com/GustavoGarciaPereira" target="_blank">Meus projetos no GitHub</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=gusgurtavo@gmail.com&su=assunto do email&body=Escreva aqui sua pergunta&bcc=informe aqui seu email" target="_blank">Contactar no meu e-mail</a></li>
-            </ol>
-            <a class="btn btn-primary" href="" >
-                Click aqui para entra em contato por email
+</div>
+
+
+
+        
+        <main>
+            <h2 id="tecnologia">Linguagens e tecnologias que trabalho</h2>
+            <p>Linguagem Python com o frameworke Django</p>
+            <p>Já trabalhei tambám com C# com MVC5</p>
+            <p>Banco de dados Mysql, Postgre e Sqlserver</p>
+            <p>Atualmente trabalho com Postgre</p>
+            <p>E consegio entegra o esperimento no meu site</p>
+            <iframe style="width: 500px; height: 300px;" frameborder="0" src="https://embed.molview.org/v1/?mode=balls&cid=3014488">
+            </iframe>
+        
+            <br>
+            <br>
+        
+            <a class="btn btn-primary" href="http://molview.org/?cid=3014488" target="_blank">
+                Para Saber mais No Site molview
             </a>
-          </div>
-        <small id="contato">
+        
+            <br>
+            <br>
+    
+            <h2>Livros Que Ando Lendo</h2>
+    
+            <p class="titulo-livro">TED Talks: O guia oficial do TED para falar em público</p>
+            <img src="https://images-na.ssl-images-amazon.com/images/I/417BOtbafUL._SX346_BO1,204,203,200_.jpg" alt="capa do livro ted Talks">
+            <p>Começei a ler recentemente, mais precisamente hoje 06-07-2020 kkkk</p>
+            <p>Quando terminar de ler virei aqui para contar</p>
+    
+            <h2>Livros Que Ando Lendo</h2>
+    
+            <p class="titulo-livro">Fahrenheit 451</p>
+            <img src="https://images-na.ssl-images-amazon.com/images/I/41qwit8V+sL._SX331_BO1,204,203,200_.jpg" alt="capa do livro Fahrenheit 451">
+            <p>Livro incrível quase não tenho palavras para descrever sua </p>
+            <p>incrível e apaixonante história. </p>
+            <p>quem é apaixonado por livros provavelmente vai se identificar</p>
+            <p>mais com o drama desse mundo!</p>
+            <p>mas o mais fantástico, é que você depois de ler, reconhece a importância</p>
+            <p>que tem ter um livro</p>
+            <p>e como é importante preservar a conquistas e conhecimen</p>
+            <p>e tão importante quanto guardar o conhecimento e as conquistas</p>
+            <p>é guardar quando falhamos, quando dá tudo errado.</p>
+            <p>guardar para as próximas gerarçẽos, é guardar a certeza de que não </p>
+            <p>repetiremos os nossos erros</p>
+            <p>gustavo</p>
+    
+            <p></p>
+    
+    
             <div>
-                &copy; 
-                Copyright 2020     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gusgurtavo@gmail.com&su=assunto do email&body=Escreva aqui sua pergunta&bcc=informe aqui seu email" target="_blank">
-                    gusgurtavo@gmail.com
-                </a>
-            </div>
-        </small>
-    </footer>
+                <div class="d">
+                        <h4 class="font-italic">Meu contato</h4>
+                        <ol class="list-unstyled">
+                          <li><a href="https://github.com/GustavoGarciaPereira" target="_blank">Meus projetos no GitHub</a></li>
+                          <li><a href="#">Twitter</a></li>
+                          <li><a href="#">Facebook</a></li>
+                          <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=gusgurtavo@gmail.com&su=assunto do email&body=Escreva aqui sua pergunta&bcc=informe aqui seu email" target="_blank">Contactar no meu e-mail</a></li>
+                        </ol>
+                        <a class="btn btn-primary" href="" >
+                            Click aqui para entra em contato por email
+                        </a>
+                      </div>
+                    <small id="contato">
+                        <div>
+                            &copy; 
+                            Copyright 2020     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gusgurtavo@gmail.com&su=assunto do email&body=Escreva aqui sua pergunta&bcc=informe aqui seu email" target="_blank">
+                                gusgurtavo@gmail.com
+                            </a>
+                        </div>
+                    </small>
+                </div>
+    
+        </div>
+
+
+    </main>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
