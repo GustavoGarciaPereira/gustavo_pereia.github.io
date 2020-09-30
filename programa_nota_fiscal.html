@@ -7,138 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet"> 
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
-    <style>
-        #gmail{
-            position: relative;
-            left: 44px;
-        }
-        .rodape{
-            position: relative;
-            left: 292px;
-            top: 120px;
-        }
-        .apresentacao{
-            position: relative;
-            bottom: 320px;
-        }
-
-        main{
-            position: relative;
-            left: 200px;
-        }
-        #imagem-principal-img{
-            position: relative;
-            left: 880px;
-            top: 30px;
-        }
-
-
-        .fonte{
-            font-family: 'Indie Flower', cursive;
-        }
-        h2{
-            padding-top: 110px;
-        }
-        .titulo-livro{
-            font-family: 'Indie Flower', cursive;
-            font-size: 30px;
-            padding-top: 70px;
-        }
-        small>div{
-            padding-top: 12px;
-            padding-bottom: 32px;
-        }
-        .fa{
-            font-size:48px;
-            padding-left: 46px;
-            padding-right: 46px;
-            text-decoration: none;
-            
-        }
-
-        a:link, a:visited{
-            color:rgba(43, 26, 141,0.5);
-        }
-
-        a:hover{
-            color:rgb(15, 11, 11);
-        }
-        #tecnologias{
-            padding-top: 48px;
-        }
-        a:link{
-            text-decoration:none;
-        }
-        .btn{
-            color:rgba(194, 50, 105, 0.5);
-            
-            border-color: rgba(15, 11, 11, 0.4);
-        }
-        .btn:hover{
-            background-color: rgba(255, 0, 0, 0.4);
-            border-color: rgba(255, 0, 0, 0.4);
-        }
-        .btn:link{
-            background-color: rgba(15, 11, 11, 0.4);
-            border-color: rgba(15, 11, 11, 0.4);
-        }
-
-
-        @media screen and (max-width: 600px) {
-            #imagem-principal-img{
-                position: relative;
-                height: 100px;
-                width: 100px;
-                top: 70px;
-                left: 280px;
-            }
-            .apresentacao{
-                position: relative;
-                top: 0px;
-            }
-            main{
-                position: relative;
-                top: 120px;
-                left: 50px;
-            }
-            footer{
-                position: relative;
-                right: 200px;
-            }
-            .fa{
-            font-size:48px;
-            padding-left: 16px;
-            padding-right: 16px;
-            text-decoration: none;
-            
-        }
-        .nome-descricao{
-            padding-top: 50px;
-            padding-left: 42px;
-
-        }
-        .indix{
-            position: relative;
-            left: 23px;
-        }
-        iframe{
-            width: 20px;
-        }
-        .rodape{
-            position: relative;
-            top: 400px;
-            left: 50px;
-        }
-        #gmail{
-            position: relative;
-            left: 15px;
-        }
-        ol{
-            position: relative;
-            left: 30px;
-        }
-        }
-    </style>
+    <link rel="stylesheet" href="style/style.css">
     <title>Gustavo G.Pereira</title>   
 </head>
 <body>
@@ -166,54 +35,46 @@
 <h1>gustavo programa</h1>
 <p><a href="programa/primeira-tela.exe"> baixar para linux </a><br /></p>
     </main>
-<div class="rodape">
-    <div class="d">
-        <h4 class="font-italic">Meu contato</h4>
-        <ol class="list-unstyled">
-          <li>
-              <a href="https://github.com/GustavoGarciaPereira" target="_blank">
-                <i class="fa fa-github-square" style="font: size 30px"></i>
-                
-            </a>
-          </li>
-          
-          
-          <li>
-              <a href="#">
-                <i class="fa fa-twitter" style="font: size 30px"></i>
-              </a>
-            </li>
-          
-          
-          <li>
-              <a href="#">
-                <i class="fa fa-facebook" style="font: size 30px"></i>
+    <div class="rodape">
+        <div class="d">
+            <h4 class="font-italic">Meu contato</h4>
+            
               
-            </a>
-            </li>
-
-
-          <li>
+                  <a href="https://github.com/GustavoGarciaPereira" target="_blank">
+                    <i class="fa fa-github-square" style="font: size 30px"></i>
+                    
+                </a>
+              
+                  <a href="#">
+                    <i class="fa fa-twitter" style="font: size 30px"></i>
+                  </a>
+              
+                  <a href="#">
+                    <i class="fa fa-facebook" style="font: size 30px"></i>
+                  
+                </a>
+                
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gusgurtavo@gmail.com&su=assunto do email&body=Escreva aqui sua pergunta&bcc=informe aqui seu email" target="_blank">
                     <i>
                         <img id="gmail" src="./img-icone/gmail.svg" width="30px" height="30px" alt="">
                     </i>
 
                 </a>
-           </li>
-        </ol>
-    </div>
-    <small id="contato">
-        <div>
-            &copy; 
-            Copyright 2020     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gusgurtavo@gmail.com&su=assunto do email&body=Escreva aqui sua pergunta&bcc=informe aqui seu email" target="_blank">
-                gusgurtavo@gmail.com
-            </a>
-            
+               
         </div>
-        Ícones feitos por <a href="https://www.flaticon.com/br/autores/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/br/" title="Flaticon"> www.flaticon.com</a>
-    </small>
-</div>
+        <small id="contato">
+            <div id="copyright">
+                &copy; 
+                Copyright 2020     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gusgurtavo@gmail.com&su=assunto do email&body=Escreva aqui sua pergunta&bcc=informe aqui seu email" target="_blank">
+                    gusgurtavo@gmail.com
+                </a>
+                
+            </div>
+            <div id="creditos">
+                Ícones feitos por <a href="https://www.flaticon.com/br/autores/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/br/" title="Flaticon"> www.flaticon.com</a>
+            </div>
+        </small>
+    </div>
 
 </div>
 
