@@ -1,6 +1,16 @@
-<video src="
+<video id="filme" src="
     https://www205.o0-1.com/token=OQ6M04yGmXKmq9Gisn1O1g/1601766900/177.8.0.0/24/1/a2/49fc4eae35335a86594e70d2d0b06a21-480p.mp4
     "
     autoplay=""
     controls="">
 </video>
+
+
+
+<script>
+    var mediaElement = document.getElementById('filme');
+  // Retorna o tempo em que o arquivo termina (em segundos)
+    mediaElement.currentTime = 34; // Ir para 122 segundos
+    mediaElement.play();
+
+</script>
