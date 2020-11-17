@@ -21,11 +21,14 @@
         main{
             position: relative;
             left: 200px;
+            top: 100px;
         }
         #imagem-principal-img{
             position: relative;
             left: 880px;
             top: 30px;
+            width: 280px;
+            height: 280px;
         }
 
 
@@ -81,6 +84,13 @@
         .btn:link{
             background-color: rgba(15, 11, 11, 0.4);
             border-color: rgba(15, 11, 11, 0.4);
+        }
+        .titulo-pagina{
+            position: absolute;
+            left: 200px;
+            top: 150px;
+            bottom: 100px;
+
         }
 
 
