@@ -8,11 +8,13 @@
             position: relative;
             left: 44px;
         }
+
         .rodape{
             position: relative;
-            left: 292px;
-            top: 120px;
+            top: 400px;
+            padding-left: 200px;
         }
+        
         .apresentacao{
             position: relative;
             bottom: 320px;
@@ -31,7 +33,17 @@
             height: 280px;
         }
 
-
+        .back-color{
+            padding-top: 12px;
+            padding-left: 20px;
+            background-color: rgba(49, 255, 203, 0.1);
+            border-radius: 40px;
+            position: relative;
+            right: 30px;
+        }
+        .titulo-pagina{
+            padding-right: 20px;
+        }
         .fonte{
             font-family: 'Indie Flower', cursive;
         }
@@ -41,7 +53,10 @@
         .titulo-livro{
             font-family: 'Indie Flower', cursive;
             font-size: 30px;
-            padding-top: 70px;
+
+        }
+        body{
+            background-color: rgba(191, 216, 210, 0.5);
         }
         small>div{
             padding-top: 42px;
@@ -92,6 +107,18 @@
             bottom: 100px;
 
         }
+        .titulo-prinpal{
+            font-family: 'Indie Flower', cursive;
+            font-size: 30px;
+        }
+        .back-color-conteudo{
+            padding-top: 12px;
+            padding-left: 20px;
+            background-color: rgba(49, 255, 203, 0.1);
+            border-radius: 40px;
+            position: relative;
+            right: 30px;
+        }
 
 
         @media screen and (max-width: 600px) {
@@ -99,8 +126,9 @@
                 position: relative;
                 height: 100px;
                 width: 100px;
-                top: 70px;
+                top: 4px;
                 left: 280px;
+                
             }
             .apresentacao{
                 position: relative;
@@ -137,7 +165,7 @@
         .rodape{
             position: relative;
             top: 400px;
-            left: 50px;
+            left: -130px;
         }
         #gmail{
             position: relative;
@@ -159,4 +187,42 @@
         small>div#copyright{
             padding-left: 10px;
         }
+        .titulo-livro{
+            font-family: 'Indie Flower', cursive;
+            font-size: 30px;
+
+            position: relative;
+            left: -200px;
+            padding-top: 100px;
         }
+        .back-color{
+            padding-top: 12px;
+            padding-left: 12px;
+            padding-right:10px ;
+            
+            background-color: rgba(49, 255, 203, 0.1);
+            border-radius: 40px;
+            position: relative;
+            right: 110px;
+            left: -150px;
+            top: 60px;
+            display: block;
+        }
+        img{
+            position: relative;
+            left: -200px;
+        }
+        .back-color-conteudo{
+            padding-top: 12px;
+            padding-left: 12px;
+            padding-right:10px ;
+            
+            background-color: rgba(49, 255, 203, 0.1);
+            border-radius: 40px;
+            position: relative;
+            right: 110px;
+            left: -200px;
+            top: 60px;
+            display: block;
+        }
+    }
