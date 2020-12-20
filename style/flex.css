@@ -28,7 +28,7 @@ main{
     
 }
 aside{
-    background-color: #8b91af;
+    background-color:#8616A8;
     grid-area:a;
 }
 footer{
@@ -49,13 +49,8 @@ header div a{
 }
 
 header div a:hover{
-    color: rgb(171, 162, 212);
+    color: rgb(7, 255, 201);
 }
-
-
-
-
-
 
 footer div{
     text-align: center;
@@ -67,4 +62,20 @@ footer div a{
     font-size: 20px;
     padding-top: 60px;
     text-decoration: none;
+}
+
+.aside-p{
+    color: #E3A6F5;
+}
+
+.perfil-imagem{
+    padding-left: 133px;
+    padding-top: 30px;
+}
+@media screen and (max-width: 600px) {
+    .perfil-imagem{
+        padding-left: 150px;
+        padding-right: 90px;
+        padding-top: 30px;
+    }   
 }
