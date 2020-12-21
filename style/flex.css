@@ -72,10 +72,14 @@ footer div a{
     padding-left: 133px;
     padding-top: 30px;
 }
+.imagem-text{
+    position: relative;
+    padding: 23px 23px 23px 330px;
+}
 @media screen and (max-width: 600px) {
     .perfil-imagem{
         padding-left: 150px;
         padding-right: 90px;
         padding-top: 30px;
-    }   
+    }  
 }
