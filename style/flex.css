@@ -22,6 +22,7 @@ header{
     grid-area: h;
     padding: 40px;
 }
+
 main{
     background-color: #c1dbc3;
     grid-area: m;
@@ -76,10 +77,49 @@ footer div a{
     position: relative;
     padding: 23px 23px 23px 330px;
 }
+
+#text-descricao{
+    position: relative; 
+    padding-left: 40px; 
+    text-align: center;
+}
 @media screen and (max-width: 600px) {
+    .container{
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        grid-template-rows: 10vh auto vh 10vh;
+        grid-template-areas:  "h h"
+                              "a a"
+                              "m m"
+                              "f f";
+                             
+    }
+
     .perfil-imagem{
-        padding-left: 150px;
+        position: relative;
+        padding-left: 115px;
         padding-right: 90px;
         padding-top: 30px;
-    }  
+    }
+    .imagem-text{
+        position: relative;
+        padding: 0px 0px 0px 0px;
+    }
+
+    #text-descricao{
+        position: relative; 
+        padding-left: 0px; 
+        text-align: center;
+    }
+    img.post{
+        width: 200px;
+        height: 200px;
+        padding-top: 20px;
+        padding-left: 60px;
+        
+    }
+    header div{
+        text-align: 0;
+    }
+    
 }
