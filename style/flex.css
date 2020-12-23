@@ -16,7 +16,6 @@ html, body{
                          
 }
 
-
 header{
     background-color: #e9b59f;
     grid-area: h;
@@ -25,18 +24,17 @@ header{
 
 main{
     background-color: #c1dbc3;
-    grid-area: m;
-    
+    grid-area: m;   
 }
 aside{
     background-color:#8616A8;
     grid-area:a;
 }
+
 footer{
     background-color: #f5c0ec;
     grid-area:f;
 }
-
 
 header div{
     text-align: center;
@@ -47,79 +45,4 @@ header div a{
     font-size: 30px;
     padding-top: 60px;
     text-decoration: none;
-}
-
-header div a:hover{
-    color: rgb(7, 255, 201);
-}
-
-footer div{
-    text-align: center;
-    color: rgb(171, 162, 212);
-}
-
-footer div a{
-    color: rgb(62, 57, 83);
-    font-size: 20px;
-    padding-top: 60px;
-    text-decoration: none;
-}
-
-.aside-p{
-    color: #E3A6F5;
-}
-
-.perfil-imagem{
-    padding-left: 133px;
-    padding-top: 30px;
-}
-.imagem-text{
-    position: relative;
-    padding: 23px 23px 23px 330px;
-}
-
-#text-descricao{
-    position: relative; 
-    padding-left: 40px; 
-    text-align: center;
-}
-@media screen and (max-width: 600px) {
-    .container{
-        display: grid;
-        grid-template-columns: 3fr 2fr;
-        grid-template-rows: 10vh auto vh 10vh;
-        grid-template-areas:  "h h"
-                              "a a"
-                              "m m"
-                              "f f";
-                             
-    }
-
-    .perfil-imagem{
-        position: relative;
-        padding-left: 130px;
-        padding-right: 90px;
-        padding-top: 30px;
-    }
-    .imagem-text{
-        position: relative;
-        padding: 0px 0px 0px 0px;
-    }
-
-    #text-descricao{
-        position: relative; 
-        padding-left: 0px; 
-        text-align: center;
-    }
-    img.post{
-        width: 200px;
-        height: 200px;
-        padding-top: 20px;
-        padding-left: 60px;
-        
-    }
-    header div{
-        text-align: 0;
-    }
-    
 }
