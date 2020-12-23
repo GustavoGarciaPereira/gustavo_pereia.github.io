@@ -3,11 +3,12 @@ html, body{
     padding:0;
     border: 0;
     box-sizing: border-box;
-    background: #462c5e;
+    background: #a97ad4;
 }
 
 .container{
     display: grid;
+    grid-row-gap: 2px;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 20vh auto vh 10vh;
     grid-template-areas:  "h h"
@@ -17,7 +18,7 @@ html, body{
 }
 
 header{
-    background-color: #e9b59f;
+    background-color: #b554d3;
     grid-area: h;
     padding: 40px;
 }
@@ -45,4 +46,11 @@ header div a{
     font-size: 30px;
     padding-top: 60px;
     text-decoration: none;
+}
+
+#copyright>a{
+    color: rgb(0, 0, 0);
+}
+#copyright{
+    color: rgb(0, 0, 0);
 }
