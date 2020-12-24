@@ -25,19 +25,19 @@
         position: relative;
         padding: 0px 10px 0px 10px;
     }
-    img.post{
-        width: 200px;
+
+    
+    .imagem-text > img{
+        width: 250px;
         height: 200px;
         position: relative;
-        padding-top: 1px;
-        padding-left: 50px;
-        
+        padding-top: 30px;
+        padding-left: 49px;
     }
 
     header div{
         text-align: 0;
     }
-
 
     .imagem-text-responsivo{
         position: relative;
