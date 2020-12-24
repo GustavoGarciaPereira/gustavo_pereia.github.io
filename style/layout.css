@@ -18,7 +18,10 @@ footer div a{
 .aside-p{
     color: #E3A6F5;
 }
-
+.aside-p > img{
+    width: 40px;
+    border-radius:20px;
+}
 .perfil-imagem{
     padding-left: 133px;
     padding-top: 30px;
@@ -33,47 +36,4 @@ footer div a{
     position: relative; 
     padding-left: 40px; 
     text-align: center;
-}
-
-@media screen and (max-width: 600px) {
-    .container{
-        display: grid;
-        grid-template-columns: 3fr 2fr;
-        grid-template-rows: 10vh auto vh 10vh;
-        grid-template-areas:  "h h"
-                              "a a"
-                              "m m"
-                              "f f";                       
-    }
-
-    .perfil-imagem{
-        position: relative;
-        padding-left: 130px;
-        padding-right: 90px;
-        padding-top: 30px;
-    }
-
-    .imagem-text{
-        position: relative;
-        padding: 0px 0px 0px 0px;
-    }
-
-    #text-descricao{
-        position: relative; 
-        padding-left: 0px; 
-        text-align: center;
-    }
-
-    img.post{
-        width: 200px;
-        height: 200px;
-        padding-top: 20px;
-        padding-left: 60px;
-        
-    }
-
-    header div{
-        text-align: 0;
-    }
-    
 }
