@@ -13,8 +13,7 @@ html, body{
     grid-template-rows: 20vh auto vh 10vh;
     grid-template-areas:  "h h"
                           "m a"
-                          "f f";
-                         
+                          "f f";             
 }
 
 header{
