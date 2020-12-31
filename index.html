@@ -53,6 +53,17 @@
                 <p>E da preservação da história</p>
                 <p>para não cometermos os mesmos erros do passando.</p>
             </div>
+            <div class="imagem-text">
+                <img class="post ajuste" id="gato" src="" 
+                width="400px" height="300px" alt="" srcset="">
+                <p>imagem gato</p>
+                <p>cada vez que você recarregar a págima</p>
+                <p>uma foto de gato fofo é mostrada!</p>
+                <button onclick="mais_gato()">
+                    veja um novo gato
+                </button>
+
+            </div>
         </main>
         <aside>
             <div>
@@ -99,4 +110,22 @@
         </footer>
     </div>
 </body>
+<script type="text/javascript">
+
+async function mais_gato(){
+        console.log("gustavo")
+        const id_gato = document.getElementById("gato")
+        const url = 'https://aws.random.cat/meow'
+        let response = await fetch(url);
+        let j = await response.json();
+        id_gato.src = j.file
+    }
+
+
+    (async function(){
+        mais_gato()
+    })()
+    //esse link me ajudou muito
+    //https://www.javascripttutorial.net/javascript-fetch-api/
+</script>
 </html>
