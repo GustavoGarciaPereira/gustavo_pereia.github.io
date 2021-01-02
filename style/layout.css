@@ -42,3 +42,13 @@ footer div a{
     width: 300px;
     height: 300px;
 }
+
+hr { 
+    display: block;
+    margin-end: 0.1em;
+    margin-start: 0.1px;
+    border: 0.1px inset;
+    overflow: hidden;
+    margin-before: 0.1em;
+    margin-after: 0.1em;
+}
