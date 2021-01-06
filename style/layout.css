@@ -28,6 +28,7 @@ footer div a{
 }
 
 .imagem-text{
+    text-align: center;
     position: relative;
     padding: 23px 23px 23px 330px;
 }
@@ -51,4 +52,10 @@ hr {
     overflow: hidden;
     margin-before: 0.1em;
     margin-after: 0.1em;
+}
+
+
+.card{
+    padding:30px;
+    background-color: #d1d1d1;
 }
