@@ -1,4 +1,4 @@
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 400px) {
     .container{
         display: grid;
         grid-template-columns: 3fr 2fr;
@@ -32,7 +32,7 @@
         height: 200px;
         position: relative;
         padding-top: 30px;
-        padding-left: 49px;
+        padding-left: 5px;
     }
 
     header div{
@@ -43,5 +43,10 @@
         position: relative;
         padding: 30px 0px 30px 30px;
     }
-        
+
+    .card{
+        padding: 0px;
+    }
+ 
 }
+

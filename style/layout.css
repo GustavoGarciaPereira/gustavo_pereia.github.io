@@ -15,6 +15,11 @@ footer div a{
     text-decoration: none;
 }
 
+.card{
+    text-align: center;
+}
+
+
 .aside-p{
     color: #E3A6F5;
 }
@@ -29,8 +34,7 @@ footer div a{
 
 .imagem-text{
     text-align: center;
-    position: relative;
-    padding: 23px 23px 23px 330px;
+    background-color:#be97da;
 }
 
 #text-descricao{
@@ -58,4 +62,8 @@ hr {
 .card{
     padding:30px;
     background-color: #d1d1d1;
+}
+
+.post{
+    padding-top: 30px;
 }
