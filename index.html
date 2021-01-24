@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="style/layout.css">
     <link rel="stylesheet" href="style/responsivo.css">
     -->
-    <title>Meu Site</title>
+    <title>Site pessoal</title>
 </head>
 <body>
     <div class="container">
@@ -30,6 +30,7 @@
             <div>
                 <a href="./podcast.html">Podcast agronomy</a>
                 <a href="portifolio/home-portifolio.html">Portifólio</a>
+                <a href="#jogo-p-p-t">jogo</a>
             </div>
         </header>
         <main>
@@ -63,11 +64,8 @@
             </div>
             <hr/>
 
-
             <div class="card">
-            <div class="imagem-text">
-
-       
+                <div class="imagem-text">
                     <img class="post ajuste" src="https://images-na.ssl-images-amazon.com/images/I/41qwit8V+sL._SX331_BO1,204,203,200_.jpg" 
                     width="400px" height="300px" alt="" srcset="">
                     <p>Um dos melhores livros que vi nos últimos tempos.</p>
@@ -78,7 +76,7 @@
             </div>
             <hr/>
             <div class="card">
-            <div class="imagem-text">
+                <div class="imagem-text">
 
                     <img class="post ajuste" id="gato" src="" 
                     width="400px" height="300px" alt="" srcset="">
@@ -90,7 +88,73 @@
                     </button>
                 </div>
             </div>
+            <hr/>
 
+            <div class="card">
+                <div class="imagem-text">
+                    <h2 id="jogo-p-p-t">Jogo pedra papel tesoura</h2>
+                    
+                    <div class="elemento-principa">
+                        <div class="grup">
+                            <div class="elemento-a-ser-centralizado" id="img1"></div>
+                            <div class="elemento-a-ser-centralizado" id="mensagem"></div>
+                            <div class="elemento-a-ser-centralizado" id="img2"></div>                            
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label>
+                        <input
+                            name="user-recommend"
+                            value="pedra"
+                            type="radio"
+                            class="input-radio"
+                            id="pedra"
+                            
+                        />
+                        <img src="https://res.cloudinary.com/dminw7meh/image/upload/v1611517829/img-jogo-site/pedra_nzefl3.svg"width="40px" height="40px" alt="" srcset="">
+                        </label
+                        >
+                        <label>
+                        <input
+                            name="user-recommend"
+                            value="papel"
+                            type="radio"
+                            class="input-radio"
+                            id="papel"
+                            
+                        />
+                        <img src="https://res.cloudinary.com/dminw7meh/image/upload/v1611517829/img-jogo-site/papel_rmwauk.svg"width="40px" height="40px" alt="" srcset="">
+                        
+                        </label
+                        >
+
+                        <label
+                        ><input
+                            name="user-recommend"
+                            value="tesoura"
+                            type="radio"
+                            class="input-radio"
+                            id="tesoura"
+                        />
+                        <img src="https://res.cloudinary.com/dminw7meh/image/upload/v1611517830/img-jogo-site/tesoura_oulwv9.svg"width="40px" height="40px" alt="" srcset="">
+                        </label
+                        >
+                    </div>
+                    
+                    <div id="pepate">
+                        <button onclick="jogo()">
+                            jogar
+                        </button>
+                    </div>
+
+                    
+
+                </div>
+            </div>
 
             
             
@@ -127,7 +191,7 @@
                     -->
                 </div>
                 
-            </div>
+            
                 <div class="anuncio">
                     <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FcndManoelaFranke%2Fposts%2F2837754673139242&width=350&show_text=true&height=498&appId" width="350" height="650" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                     <br>
@@ -167,6 +231,42 @@ async function mais_gato(){
     
     //esse link me ajudou muito
     //https://www.javascripttutorial.net/javascript-fetch-api/
+</script>
+
+<script>
+
+
+
+
+    async function jogo(){
+
+        const elemnto_html = document.querySelector(".form-group")
+        const pedra = document.querySelector("#pedra")
+
+        const papel = document.querySelector("#papel")
+        const tesoura = document.querySelector("#tesoura")
+
+        const mensagem = document.querySelector("#mensagem")
+        console.log(">>>>",pedra.checked)
+        console.log(">>>>",papel.checked)
+        console.log(">>>>",tesoura.checked)
+        const jogada = pedra.checked ? 'pedra' : (papel.checked ? 'papel' : tesoura.checked ? 'tesoura': 'nada');
+        console.log(">>>",jogada)
+//http://127.0.0.1:5000/api/ppt/jogada?jogada_usuario=tesoura
+        const url = `https://deploy-flask-1.herokuapp.com/api/ppt/jogada?jogada_usuario=${jogada}`
+        console.log(">>>>>",url)
+        let response = await fetch(url);
+        let j = await response.json();
+
+        console.log(j)
+
+
+        mensagem.innerHTML = `<p>${j.mensagem}</p>`
+
+
+        document.querySelector("#img1").innerHTML =`<img src="${j.img1}"width="40px" height="40px" alt="" srcset="">`
+        document.querySelector("#img2").innerHTML = `<img src="${j.img2}"width="40px" height="40px" alt="" srcset="">`
+    }
 </script>
 
 </html>

@@ -50,6 +50,42 @@
     .anuncio{
         padding: 0px;
     }
+
+    .elemento-principal {
+        position: absolute;
+        left: 100px;
+        
+    }
+    .elemento-a-ser-centralizado {
+        
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        
+    }
+    .grup{
+        padding-left: 40px;
+        padding-bottom: 100px;
+        padding-top: 50px;
+    }
+    .form-group{
+        padding-bottom: 30px;
+    }
+    #pepate{
+        padding-bottom: 30px;
+    }
+    #img1{
+        padding-right: 30px;
+    }
+    #mensagem{
+        padding-right: 30px;
+    }
+    #pedra{
+        padding-right: 150px;
+    }
+    #papel{
+        padding-right: 150px;
+    }
  
 }
 
