@@ -192,11 +192,12 @@
                 </div>
                 
             
-                <div class="anuncio">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FcndManoelaFranke%2Fposts%2F2837754673139242&width=350&show_text=true&height=498&appId" width="350" height="650" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                    <br>
-                    <br>
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FcndManoelaFranke%2Fposts%2F2831696867078356&width=350&show_text=true&height=535&appId" width="350" height="690" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <div id="anuncio">
+                   <div id="anuncio-1"></div>
+                   <br>
+                   <br>
+                   <br>
+                   <div id="anuncio-2"></div>
                 </div>
             </div>
 
@@ -215,7 +216,6 @@
 <script type="text/javascript">
 
 async function mais_gato(){
-        console.log("gustavo")
         const id_gato = document.getElementById("gato")
         const url = 'https://aws.random.cat/meow'
         let response = await fetch(url);
@@ -247,18 +247,12 @@ async function mais_gato(){
         const tesoura = document.querySelector("#tesoura")
 
         const mensagem = document.querySelector("#mensagem")
-        console.log(">>>>",pedra.checked)
-        console.log(">>>>",papel.checked)
-        console.log(">>>>",tesoura.checked)
         const jogada = pedra.checked ? 'pedra' : (papel.checked ? 'papel' : tesoura.checked ? 'tesoura': 'nada');
-        console.log(">>>",jogada)
 //http://127.0.0.1:5000/api/ppt/jogada?jogada_usuario=tesoura
         const url = `https://deploy-flask-1.herokuapp.com/api/ppt/jogada?jogada_usuario=${jogada}`
-        console.log(">>>>>",url)
         let response = await fetch(url);
         let j = await response.json();
 
-        console.log(j)
 
 
         mensagem.innerHTML = `<p>${j.mensagem}</p>`
@@ -268,5 +262,5 @@ async function mais_gato(){
         document.querySelector("#img2").innerHTML = `<img src="${j.img2}"width="40px" height="40px" alt="" srcset="">`
     }
 </script>
-
+<script src="script/script-anuncio.js"></script>
 </html>
