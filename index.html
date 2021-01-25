@@ -81,7 +81,7 @@
             <div class="card">
                 <div class="imagem-text">
 
-                    <img class="post ajuste" id="gato" src="" 
+                    <img class="post ajuste" id="gato" src="./T12UwYk.jpeg" 
                     width="400px" height="300px" alt="" srcset="">
                     <p>imagem gato</p>
                     <p>cada vez que você recarregar a págima</p>
@@ -248,7 +248,7 @@ async function mais_gato(){
         let j = await response.json();
 
         mensagem.innerHTML = `<p>${j.mensagem}</p>`
-        
+
         document.querySelector("#img1").innerHTML =`<img src="${j.img1}"width="40px" height="40px" alt="" srcset="">`
         document.querySelector("#img2").innerHTML = `<img src="${j.img2}"width="40px" height="40px" alt="" srcset="">`
     }
