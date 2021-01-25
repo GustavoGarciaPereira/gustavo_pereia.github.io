@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="style/layout.css">
     <link rel="stylesheet" href="style/responsivo.css">
     -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        </style>
     <title>Site pessoal</title>
 </head>
 <body>
@@ -91,8 +94,8 @@
             <hr/>
 
             <div class="card">
-                <div class="imagem-text">
-                    <h2 id="jogo-p-p-t">Jogo pedra papel tesoura</h2>
+                <div class="imagem-text" style="background-color:cadetblue">
+                    <h2 id="jogo-p-p-t" style="font-family: 'Dancing Script', cursive">Jogo: Pedra - Papel - Tesoura</h2>
                     
                     <div class="elemento-principa">
                         <div class="grup">
@@ -100,7 +103,6 @@
                             <div class="elemento-a-ser-centralizado" id="mensagem"></div>
                             <div class="elemento-a-ser-centralizado" id="img2"></div>                            
                         </div>
-
                     </div>
 
 
@@ -150,14 +152,9 @@
                             jogar
                         </button>
                     </div>
-
-                    
-
                 </div>
             </div>
 
-            
-            
         </main>
         <aside>
             <div>
@@ -250,11 +247,8 @@ async function mais_gato(){
         let response = await fetch(url);
         let j = await response.json();
 
-
-
         mensagem.innerHTML = `<p>${j.mensagem}</p>`
-
-
+        
         document.querySelector("#img1").innerHTML =`<img src="${j.img1}"width="40px" height="40px" alt="" srcset="">`
         document.querySelector("#img2").innerHTML = `<img src="${j.img2}"width="40px" height="40px" alt="" srcset="">`
     }
