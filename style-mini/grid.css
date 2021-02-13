@@ -1,1 +1,73 @@
 html, body{margin: 0;padding:0;border: 0;box-sizing: border-box;background: #a97ad4;}.container{display: grid;grid-row-gap: 2px;grid-template-columns: 3fr 1fr;grid-template-rows: 20vh auto vh 10vh;grid-template-areas: "h h" "m a" "f f";}header{background-color: #b554d3;grid-area: h;padding: 40px;}main{background-color: #be97da;grid-area: m;}aside{background-color:#8616A8;grid-area:a;}footer{background-color: #f5c0ec;grid-area:f;}header div{text-align: center;}header div a{color: rgb(62, 57, 83);font-size: 30px;padding-top: 60px;text-decoration: none;}#copyright>a{color: rgb(0, 0, 0);}#copyright{color: rgb(0, 0, 0);}header div a:hover{color: rgb(92, 3, 82);}footer div{text-align: center;color: rgb(171, 162, 212);}footer div a{color: rgb(62, 57, 83);font-size: 20px;padding-top: 60px;text-decoration: none;}.card{text-align: center;}.aside-p{color: #E3A6F5;}.aside-p > img{width: 40px;border-radius:20px;}.perfil-imagem{padding-left: 133px;padding-top: 30px;}.imagem-text{text-align: center;background-color:#be97da;}#text-descricao{position: relative;padding-left: 40px;text-align: center;}.ajuste{width: 300px;height: 300px;}hr {display: block;margin-end: 0.1em;margin-start: 0.1px;border: 0.1px inset;overflow: hidden;margin-before: 0.1em;margin-after: 0.1em;}.card{padding:30px;background-color: #d1d1d1;}.post{padding-top: 30px;}#anuncio{background-color:white;padding: 15px;border: 3px solid;}#pedra{background-image:url(../img-jogo/stone.svg);}[type=radio] {position: absolute;opacity: 0;width: 0;height: 0;}[type=radio] + img {cursor: pointer;}[type=radio]:checked + img {outline: 2px solid #f00;}.elemento-principal {position: absolute;left: 100px;}.elemento-a-ser-centralizado {display: table-cell;text-align: center;vertical-align: middle;}.grup{padding-left: 310px;padding-bottom: 100px;padding-top: 50px;}.form-group{padding-bottom: 30px;}#pepate{padding-bottom: 30px;}#img1{padding-right: 30px;}#mensagem{padding-right: 30px;}#pedra{padding-right: 150px;}#papel{padding-right: 150px;}hr{margin: 13px;padding-top: 80px;padding-bottom: 80px;}@media screen and (max-width: 400px) {.container{display: grid;grid-template-columns: 3fr 2fr;grid-template-rows: 10vh auto vh 10vh;grid-template-areas: "h h" "a a" "m m" "f f";}.perfil-imagem{position: relative;padding-left: 130px;padding-right: 90px;padding-top: 30px;}#text-descricao{position: relative;padding-left: 0px;text-align: center;}.imagem-text{position: relative;padding: 0px 10px 0px 10px;}.imagem-text > img{width: 250px;height: 200px;position: relative;padding-top: 30px;padding-left: 5px;}header div{text-align: 0;}.imagem-text-responsivo{position: relative;padding: 30px 0px 30px 30px;}.card{padding: 0px;}#anuncio{padding: 0px;}.elemento-principal {position: absolute;left: 100px;}.elemento-a-ser-centralizado {display: table-cell;text-align: center;vertical-align: middle;}.grup{padding-left: 40px;padding-bottom: 100px;padding-top: 50px;}.form-group{padding-bottom: 30px;}#pepate{padding-bottom: 30px;}#img1{padding-right: 30px;}#mensagem{padding-right: 30px;}#pedra{padding-right: 150px;}#papel{padding-right: 150px;}}
+
+
+/* Play/Pause Button */
+.play-button{
+    height: 45px
+}
+input[type="range"] {
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    border-radius: 0; /* iOS */
+    background: transparent;
+}
+input[type="range"]:focus {
+    outline: none;
+}
+::-webkit-slider-runnable-track {
+    background: #fff;
+}
+/*
+ * 1. Set to 0 width and remove border for a slider without a thumb
+ */
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 0; /* 1 */
+    height: 40px;
+    background: #fff;
+    box-shadow: -100vw 0 0 100vw dodgerblue; 
+    border: none; /* 2px solid #999; */
+}
+::-moz-range-track {
+    height: 40px;
+    background: #ddd;
+}
+::-moz-range-thumb {
+    background: #fff;
+    height: 40px;
+    width: 0; /* 20px; */
+    border: none; /* 3px solid #999; */
+    border-radius: 0 !important;
+    box-shadow: -100vw 0 0 100vw dodgerblue; 
+    box-sizing: border-box;
+}
+::-ms-fill-lower {
+    background: dodgerblue;
+}
+::-ms-thumb {
+    background: #fff;
+    border: 2px solid #999;
+    height: 40px;
+    width: 20px;
+    box-sizing: border-box;
+}
+::-ms-ticks-after {
+    display: none;
+}
+::-ms-ticks-before {
+    display: none;
+}
+::-ms-track {
+    background: #ddd;
+    color: transparent;
+    height: 40px;
+    border: none;
+}
+::-ms-tooltip {
+    display: none;
+}
