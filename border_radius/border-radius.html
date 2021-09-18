@@ -26,20 +26,30 @@
         <p>Gerador de border-radius com 8 valores</p>
         
         
-        <input class="input" type="member" name="input-digitos" id="id-input-1-t" maxlength="8" value="400" placeholder="1-t">1 top</input>
-        <input class="input" type="member" name="input-digitos" id="id-input-2-t" maxlength="8" value="400" placeholder="2-t">2 top</input>
-        <input class="input" type="member" name="input-digitos" id="id-input-1-l" maxlength="8" value="400" placeholder="1-l">1 Le</input>
-        <input class="input" type="member" name="input-digitos" id="id-input-2-r" maxlength="8" value="400" placeholder="2-r">2 R</input>
 
         <div id="rcorners1"></div>
+        
+        <div id="inputs-entrada">
+            <div class="inputs" >
+                border-top-left-radius: <input id="top-left-1" type="range"min="0" max="200"><input id="top-left-2" type="range"min="0" max="200">
+            </div>
+            <div class="inputs">
+                border-top-right-radius: <input id="top-right-1" type="range"min="0" max="200"><input id="top-right-2" type="range"min="0" max="200">
+            </div>
+            <div class="inputs">
+                border-bottom-right-radius: <input id="bottom-right-1" type="range"min="0" max="200"><input id="bottom-right-2" type="range"min="0" max="200">
+            </div>
+            <div class="inputs">
+                border-bottom-left-radius: <input id="bottom-left-1" type="range"min="0" max="200"><input id="bottom-left-2" type="range"min="0" max="200">
+            </div>
+        </div>
 
-        <input class="input" type="member" name="input-digitos" id="id-input-4-r" maxlength="8" value="400" placeholder="4-r">4 L</input>        
-        <input class="input" type="member" name="input-digitos" id="id-input-3-r" maxlength="8" value="400" placeholder="3-r">3 R</input>
-        <input class="input" type="member" name="input-digitos" id="id-input-4-b" maxlength="8" value="400" placeholder="4-b">4 B</input>
-        <input class="input" type="member" name="input-digitos" id="id-input-3-b" maxlength="8" value="400" placeholder="3-b">3 B</input>
         
-        
-        
+        <!-- 
+        border-top-right-radius:<input type="range"min="0" max="200"><input type="range"min="0" max="200">
+        border-bottom-right-radius:<input type="range"min="0" max="200"><input type="range"min="0" max="200">
+        border-bottom-left-radius:<input type="range"min="0" max="200"><input type="range"min="0" max="200">
+         -->
         <input class="input" type="member" name="input-digitos" id="id-input-resultado" size="50" maxlength="40"></input>
         
         <button type="button" onclick="funcaoCopiar()" required="false">Copiar testo!</button> 

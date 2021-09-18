@@ -1,8 +1,10 @@
-const articleImgs = document.querySelectorAll('.input');
+const articleImgs = document.querySelectorAll('input[type="range"]');
+console.log("fu",articleImgs)
 articleImgs.forEach((x)=>{
-    x.addEventListener('blur',(e)=>{
-        console.log(formatar_texto(e.target.id))
-        
+
+    x.addEventListener('change',(e)=>{
+        // console.log(formatar_texto(e.target.id))
+        console.log("gus",e.target.id)
         document.getElementById("rcorners1").style.borderRadius=formatar_texto(e.target.id)
     })
 })
@@ -10,14 +12,14 @@ articleImgs.forEach((x)=>{
 function formatar_texto(c){
 
 resultado = `
-    ${c.id == 'id-input-1-t' ? c.value : document.getElementById('id-input-1-t').value}px
-    ${c.id == 'id-input-2-t' ? c.value : document.getElementById('id-input-2-t').value}px
-    ${c.id == 'id-input-3-b' ? c.value : document.getElementById('id-input-3-b').value}px
-    ${c.id == 'id-input-4-b' ? c.value : document.getElementById('id-input-4-b').value}px/
-    ${c.id == 'id-input-1-l' ? c.value : document.getElementById('id-input-1-l').value}px
-    ${c.id == 'id-input-2-r' ? c.value : document.getElementById('id-input-2-r').value}px
-    ${c.id == 'id-input-3-r' ? c.value : document.getElementById('id-input-3-r').value}px
-    ${c.id == 'id-input-4-r' ? c.value : document.getElementById('id-input-4-r').value}px`
+    ${c.id == 'top-left-1' ? c.value : document.getElementById('top-left-1').value}px
+    ${c.id == 'top-left-2' ? c.value : document.getElementById('top-left-2').value}px
+    ${c.id == 'top-right-1' ? c.value : document.getElementById('top-right-1').value}px
+    ${c.id == 'top-right-2' ? c.value : document.getElementById('top-right-2').value}px/
+    ${c.id == 'bottom-right-1' ? c.value : document.getElementById('bottom-right-1').value}px
+    ${c.id == 'bottom-right-2' ? c.value : document.getElementById('bottom-right-2').value}px
+    ${c.id == 'bottom-left-1' ? c.value : document.getElementById('bottom-left-1').value}px
+    ${c.id == 'bottom-left-2' ? c.value : document.getElementById('bottom-left-2').value}px`
     console.log("gustavo",resultado)
     //resultado = `2px 90px 80px 1px/1px 90px 40px 1px`
     

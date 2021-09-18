@@ -1,12 +1,10 @@
 #rcorners1 {
-    /*border-radius:     200px    200px    100px    100px;*/
-    
-    
-    /*border-radius: 5px 10px 15px 20px; /* top left, top right, bottom right, bottom left */
-  
-    /*border-radius: 100px 45px 30px 15px/50px 30px 45px 60px;*/
-    /*border-radius:100px    50px    100px    30px  / 50px    20px    200px    60px    ;*/
-    border-radius:400px   400px    400px   400px  /400px   400px    400px   400px;
+
+    border-top-left-radius:     100px 100px;
+    border-top-right-radius:    100px 100px;
+    border-bottom-right-radius: 100px 100px;
+    border-bottom-left-radius:  100px 100px;
+
     background: #ee1746;
     padding: 20px; 
     width: 200px;
@@ -14,21 +12,45 @@
     margin-left: 800px;
     margin-top: 40px;
     margin-bottom: 40px;
+    
   }
   
   
-  input{
+  /* input{
     margin-left: 200px;
   }
-  
+   */
   #id-input-resultado{
     margin-left: 680px;
     margin-top: 150px;
     margin-bottom: 50px;
   }
   p{
-    margin-bottom: 50px;
-    margin-left: 780px;
-    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
+
+  .inputs{
+    display: flex;
+    margin: 15px;
+  }
+
+  .inputs>input{
+
+
+    flex-wrap: wrap-reverse;
+    justify-content: flex-start;
+    margin-left:20px;
+
+  }
+
+  #inputs-entrada{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+  
+
+  }
