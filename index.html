@@ -35,12 +35,12 @@
                 <a href="./border_radius/border-radius.html">Border Radius</a>
                 <a href="./podcast.html">Podcast agronomy</a>
                 <a href="portifolio/home-portifolio.html">Portifólio</a>
-                <a href="#jogo-p-p-t">jogo</a>
+                <a href="./jogo.html">jogo</a>
                 <a href="https://gustavogarciapereira.com.br/exercicio">Exercicio Espanhol</a>
             </div>
         </header>
         <main>
-
+            
             <div class="card">
                 <div class="imagem-text">
 
@@ -94,69 +94,7 @@
                     </button>
                 </div>
             </div>
-            <hr/>
 
-            <div class="card">
-                <div class="imagem-text" style="background-color:cadetblue">
-                    <h2 id="jogo-p-p-t" style="font-family: 'Dancing Script', cursive">Jogo: Pedra - Papel - Tesoura</h2>
-                    
-                    <div class="elemento-principa">
-                        <div class="grup">
-                            <div class="elemento-a-ser-centralizado" id="img1"></div>
-                            <div class="elemento-a-ser-centralizado" id="mensagem"></div>
-                            <div class="elemento-a-ser-centralizado" id="img2"></div>                            
-                        </div>
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label>
-                        <input
-                            name="user-recommend"
-                            value="pedra"
-                            type="radio"
-                            class="input-radio"
-                            id="pedra"
-                            
-                        />
-                        <img src="https://res.cloudinary.com/dminw7meh/image/upload/v1611517829/img-jogo-site/pedra_nzefl3.svg"width="40px" height="40px" alt="" srcset="">
-                        </label
-                        >
-                        <label>
-                        <input
-                            name="user-recommend"
-                            value="papel"
-                            type="radio"
-                            class="input-radio"
-                            id="papel"
-                            
-                        />
-                        <img src="https://res.cloudinary.com/dminw7meh/image/upload/v1611517829/img-jogo-site/papel_rmwauk.svg"width="40px" height="40px" alt="" srcset="">
-                        
-                        </label
-                        >
-
-                        <label
-                        ><input
-                            name="user-recommend"
-                            value="tesoura"
-                            type="radio"
-                            class="input-radio"
-                            id="tesoura"
-                        />
-                        <img src="https://res.cloudinary.com/dminw7meh/image/upload/v1611517830/img-jogo-site/tesoura_oulwv9.svg"width="40px" height="40px" alt="" srcset="">
-                        </label
-                        >
-                    </div>
-                    
-                    <div id="pepate">
-                        <button onclick="jogo()">
-                            jogar
-                        </button>
-                    </div>
-                </div>
-            </div>
             <hr>
             <div class="card">
                 <!-- <h2>gustavo-garcia-pereira-078240143</h2> -->
@@ -239,31 +177,6 @@ async function mais_gato(){
     //esse link me ajudou muito
     //https://www.javascripttutorial.net/javascript-fetch-api/
 </script>
-<script>
 
-
-
-
-    async function jogo(){
-
-        const elemnto_html = document.querySelector(".form-group")
-        const pedra = document.querySelector("#pedra")
-
-        const papel = document.querySelector("#papel")
-        const tesoura = document.querySelector("#tesoura")
-
-        const mensagem = document.querySelector("#mensagem")
-        const jogada = pedra.checked ? 'pedra' : (papel.checked ? 'papel' : tesoura.checked ? 'tesoura': 'nada');
-//http://127.0.0.1:5000/api/ppt/jogada?jogada_usuario=tesoura
-        const url = `https://deploy-flask-1.herokuapp.com/api/ppt/jogada?jogada_usuario=${jogada}`
-        let response = await fetch(url);
-        let j = await response.json();
-
-        mensagem.innerHTML = `<p>${j.mensagem}</p>`
-
-        document.querySelector("#img1").innerHTML =`<img src="${j.img1}"width="40px" height="40px" alt="" srcset="">`
-        document.querySelector("#img2").innerHTML = `<img src="${j.img2}"width="40px" height="40px" alt="" srcset="">`
-    }
-</script>
 <script src="script/script-anuncio.js"></script>
 </html>
