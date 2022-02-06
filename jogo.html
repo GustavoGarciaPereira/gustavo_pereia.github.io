@@ -2,11 +2,25 @@
 <link rel="stylesheet" href="style/grid.css"></link>
 <link rel="stylesheet" href="style/layout.css"></link>
 <link rel="stylesheet" href="style/responsivo.css"></link>
+
+<style>
+    div.grup{
+        padding-left: 802px;
+    }
+    .container-jogo{
+        grid-row-gap: 2px;
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: 20vh auto vh 10vh;
+        grid-template-areas:  "h h"
+                              "m a"
+                              "f f";             
+    }
+</style>
 </head>
 
 
 <body>
-    <div class="container">
+    <div class="container-jogo">
         <header>
             <div>
                 <a href="./index.html"> Home</a>
