@@ -141,6 +141,26 @@ section a {
     background-color: #f5f5f5;
     padding: 50px 5%;
 }
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+code {
+    font-family: 'Courier New', Courier, monospace;
+    display: block; /* faz o código ocupar toda a largura do <pre> */
+}
+
+pre {
+    background-color: #eee;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto; /* para barras de rolagem se o código for muito longo */
+}
+
+
 
 footer {
     background-color: #333;
@@ -161,7 +181,7 @@ footer {
     }
 }
 
-    </style>
+</style>
 </head>
 <body>
 
@@ -290,16 +310,67 @@ footer {
     <!-- <p>Biografia breve...</p> -->
 </section>
 
+<div class="container">
+    <header>
+        <h1>Análise de Código: Teste t e Gráficos Q-Q em Python</h1>
+    </header>
+    
+    <section>
+        <h2>Resumo</h2>
+        <p>O código fornece uma maneira de ler um arquivo <code>.sav</code>, realizar um teste t e criar dois gráficos Q-Q. Vamos analisar os principais componentes do código.</p>
+    </section>
 
+    <section>
+        <h2>Componentes Principais</h2>
+        <ol>
+            <li><strong>Importações</strong>: O código utiliza funções de diversas bibliotecas como <code>scipy.stats</code>, <code>pyreadstat</code> e <code>matplotlib.pyplot</code>.</li>
+            <li><strong>Leitura do Arquivo</strong>: É realizada a leitura de um arquivo <code>.sav</code>, e os dados são armazenados em um DataFrame.</li>
+            <li><strong>Teste t</strong>: O teste t é executado e os resultados são exibidos.</li>
+            <li><strong>Gráficos Q-Q</strong>: São criados dois gráficos Q-Q para análise visual.</li>
+        </ol>
+    </section>
 
-
-<!-- Perguntas Frequentes -->
-<section id="faq">
-    <h2>Perguntas Frequentes</h2>
-    <!-- <p>Q: Por onde começo a ler?</p>
-    <p>A: Resposta aqui...</p> -->
-    <!-- Adicione mais perguntas e respostas conforme necessário -->
-</section>
+    <section>
+        <h2>Observações</h2>
+        <ul>
+            <li>O código assume que o arquivo <code>.sav</code> contém as colunas <code>grupo</code> e <code>raclog</code>.</li>
+            <li>É necessário fornecer um caminho válido para o arquivo para que o código funcione corretamente.</li>
+            <li>Valores das variáveis são impressos antes da criação dos gráficos Q-Q.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Código Python</h2>
+        <pre><code>
+        from scipy.stats import ttest_ind
+        import pyreadstat
+        import scipy.stats as stats
+        import matplotlib.pyplot as plt
+        
+        caminho = ''
+        df, meta = pyreadstat.read_sav(caminho)
+        grupo = df['grupo']
+        raclog = df['raclog']
+        
+        # Realizar teste t
+        t_stat, p_valor = ttest_ind(raclog, grupo, equal_var=False)
+        
+        # Gráficos Q-Q
+        plt.figure(figsize=(12, 6))
+        
+        plt.subplot(1, 2, 1)
+        stats.probplot(grupo, plot=plt)
+        plt.title('Gráfico Q-Q para o Grupo 1')
+        
+        plt.subplot(1, 2, 2)
+        stats.probplot(raclog, plot=plt)
+        plt.title('Gráfico Q-Q para o Grupo 2')
+        
+        plt.tight_layout()
+        plt.show()
+        </code></pre>
+    </section>
+    
+</div>
 
 <!-- Rodapé -->
 <footer>
