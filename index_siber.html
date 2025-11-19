@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  
+  <!-- --- SEU BLOCO ORIGINAL DE ANALYTICS E METADATA (MANTIDO) --- -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLMPYCJVY2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HLMPYCJVY2');
+  </script>
+  <script charset="UTF-8" src="//web.webpushs.com/js/push/83e93ff7fa7dcfa457cbd60e9fa88e79_1.js" async></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>SYSTEM_FAILURE | Gustavo G. Pereira</title>
+  <meta name="description" content="Portfólio de Gustavo G. Pereira, Programador Python no RS, Brasil. Experiência com Python, automação, Docker, HTML, Tailwind CSS e iniciando em Rust.">
+  <meta name="keywords" content="Gustavo Garcia Pereira, Programador Python, Webcore, Glitch Art Portfolio">
+  <meta name="author" content="Gustavo G. Pereira">
+  <meta name="theme-color" content="#0000FF">
+
+  <link rel="canonical" href="https://gustavogarciapereira.github.io/">
+  <link rel="icon" href="favicon.ico">
+
+  <!-- Fontes Pixeladas -->
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- ESTÉTICA WEBCORE / ERROR 404 --- */
+    :root {
+        --blue-screen: #0000FF;
+        --crash-white: #FFFFFF;
+        --void-black: #000000;
+        --border-thick: 3px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        background-color: var(--void-black);
+        color: var(--crash-white);
+        font-family: 'VT323', monospace;
+        margin: 0;
+        padding: 20px;
+        font-size: 18px;
+        /* Efeito de Scanline (TV Antiga) */
+        background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        background-size: 100% 2px, 3px 100%;
+    }
+
+    a { text-decoration: none; color: inherit; cursor: help; }
+
+    /* Container Geral */
+    .desktop-env {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    /* --- ESTILO DAS JANELAS --- */
+    .window {
+        border: var(--border-thick) solid var(--crash-white);
+        background: var(--void-black);
+        box-shadow: 10px 10px 0px var(--blue-screen);
+        width: 100%;
+        max-width: 500px;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    /* Estilo da Barra de Título */
+    .title-bar {
+        background: var(--crash-white);
+        color: var(--void-black);
+        padding: 4px 8px;
+        font-weight: bold;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: var(--border-thick) solid var(--crash-white);
+        letter-spacing: 2px;
+    }
+
+    .title-bar .btn-close {
+        border: 1px solid var(--void-black);
+        padding: 0 5px;
+        cursor: not-allowed;
+    }
+
+    .content {
+        padding: 20px;
+        text-align: left;
+    }
+
+    /* Variação: JANELA AZUL (A principal da imagem) */
+    .window.blue-death {
+        background-color: var(--blue-screen);
+        color: var(--crash-white);
+        border-color: var(--blue-screen);
+        box-shadow: 10px 10px 0px var(--crash-white);
+    }
+    .window.blue-death .title-bar {
+        background: var(--crash-white);
+        color: var(--blue-screen);
+    }
+    .window.blue-death .btn-close {
+        border-color: var(--blue-screen);
+    }
+
+    /* Variação: JANELA BRANCA (Pop-up irritante) */
+    .window.popup {
+        background: var(--crash-white);
+        color: var(--void-black);
+        border-color: var(--crash-white);
+        box-shadow: 10px 10px 0px var(--void-black);
+        max-width: 300px;
+    }
+    .window.popup .title-bar {
+        background: var(--blue-screen);
+        color: var(--crash-white);
+    }
+
+    /* Imagem de Perfil com filtro */
+    .avatar-img {
+        width: 150px;
+        height: 150px;
+        filter: grayscale(100%) contrast(150%) drop-shadow(5px 5px 0px black);
+        border: 2px solid white;
+        display: block;
+        margin: 0 auto 15px auto;
+    }
+
+    /* Botões Retrô */
+    .retro-btn {
+        display: inline-block;
+        background: var(--crash-white);
+        color: var(--void-black);
+        border: 2px solid var(--void-black);
+        padding: 5px 15px;
+        font-family: 'VT323', monospace;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        margin-top: 10px;
+        box-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+        transition: transform 0.1s;
+    }
+    .retro-btn:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+    }
+
+    /* Botão dentro da janela azul */
+    .blue-death .retro-btn {
+        background: transparent;
+        color: var(--crash-white);
+        border-color: var(--crash-white);
+        box-shadow: 4px 4px 0px var(--void-black);
+    }
+    .blue-death .retro-btn:hover {
+        background: var(--crash-white);
+        color: var(--blue-screen);
+    }
+
+    /* Tipografia */
+    h1 { margin: 0; font-size: 2.5rem; line-height: 1; text-transform: uppercase; }
+    h2 { font-size: 1.5rem; border-bottom: 2px dashed currentColor; padding-bottom: 5px; margin-top: 0; }
+    p { font-size: 1.2rem; margin-bottom: 10px; }
+
+    /* Ícones SVG - Forçando a cor */
+    .social-icons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+    .social-icons svg {
+        width: 32px;
+        height: 32px;
+        fill: currentColor; /* Pega a cor do texto da janela */
+    }
+    .social-icons a:hover svg {
+        transform: scale(1.2);
+    }
+
+    /* Barras de Progresso Fake */
+    .progress-container {
+        border: 2px solid currentColor;
+        padding: 2px;
+        margin: 5px 0 15px 0;
+        height: 20px;
+    }
+    .progress-bar {
+        height: 100%;
+        background: currentColor;
+        animation: loading 2s infinite alternate;
+    }
+    @keyframes loading { from { width: 40%; } to { width: 95%; } }
+
+    /* ASCII Art */
+    .ascii-skull {
+        font-size: 10px;
+        line-height: 8px;
+        white-space: pre;
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    /* Efeito Glitch no Texto */
+    .glitch {
+        animation: glitch 1s linear infinite;
+    }
+    @keyframes glitch {
+        2%, 64% { transform: translate(2px,0) skew(0deg); }
+        4%, 60% { transform: translate(-2px,0) skew(0deg); }
+        62% { transform: translate(0,0) skew(5deg); }
+    }
+
+    /* Utilitários de layout */
+    .tag {
+        background: var(--void-black);
+        color: var(--crash-white);
+        padding: 2px 6px;
+        margin-right: 5px;
+        font-size: 0.9rem;
+    }
+    .window.popup .tag {
+        background: var(--blue-screen);
+    }
+
+  </style>
+</head>
+<body>
+
+    <!-- Fundo animado com marquee (texto correndo) -->
+    <div style="position: fixed; top: 0; left: 0; width: 100%; background: black; color: blue; z-index: 9999; font-size: 14px; border-bottom: 1px solid blue;">
+        <marquee scrollamount="10">SYSTEM ERROR /// GUSTAVO G. PEREIRA /// PYTHON DEVELOPER /// RS - BRASIL /// LOADING ASSETS... /// VIRUS DETECTED</marquee>
+    </div>
+
+    <div class="desktop-env" style="margin-top: 40px;">
+
+        <!-- JANELA 1: O Perfil (Estilo "Vírus Detectado" da imagem) -->
+        <div class="window blue-death">
+            <div class="title-bar">
+                <span>FATAL_ERROR.EXE</span>
+                <span class="btn-close">X</span>
+            </div>
+            <div class="content" style="text-align: center;">
+                <!-- ASCII SKULL -->
+                <div class="ascii-skull">
+    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+    ▒▒░░░░░░░░░░░░░░▒▒
+    ▒░░░░░░░░░░░░░░░░▒
+    ▒░░████░░░░████░░▒
+    ▒░░████░░░░████░░▒
+    ▒░░░░░░████░░░░░░▒
+    ▒░░░░██░░░░██░░░░▒
+    ▒▒░░░░░░░░░░░░░░▒▒
+                </div>
+                
+                <img src="https://avatars.githubusercontent.com/u/19331198?v=4" alt="Gustavo Profile" class="avatar-img">
+                
+                <h1 class="glitch">GUSTAVO G. PEREIRA</h1>
+                <p>>> PROGRAMADOR PYTHON</p>
+                <p>>> LOC: RS, BRASIL</p>
+                
+                <div style="margin-top: 20px;">
+                    <a href="Profile (3).pdf" download="Gustavo_Pereira_CV.pdf">
+                        <button class="retro-btn">
+                            [ BAIXAR CURRÍCULO ]
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- JANELA 2: Informações (Estilo Branco / Pop-up) -->
+        <div class="window popup">
+            <div class="title-bar">
+                <span>WARNING: INFO</span>
+                <span class="btn-close">_</span>
+            </div>
+            <div class="content">
+                <h2>SOBRE O USUÁRIO</h2>
+                <p>Atualmente trabalhando com:</p>
+                <div>
+                    <span class="tag">PYTHON</span>
+                    <span class="tag">DOCKER</span>
+                    <span class="tag">HTML</span>
+                    <span class="tag">TAILWIND</span>
+                </div>
+                <br>
+                <p>>> AVENTURAS ATUAIS:</p>
+                <p style="color: var(--blue-screen);">* Aprendendo RUST...</p>
+                <p style="color: var(--blue-screen);">* Curso de Estatística...</p>
+                <p style="color: var(--blue-screen);">* Automação em Python...</p>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="retro-btn" onclick="alert('ERROR: VOCÊ JÁ ESTÁ AQUI!')">OK</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- JANELA 3: Terminal / Skills -->
+        <div class="window">
+            <div class="title-bar">
+                <span>C:\SYSTEM\SKILLS</span>
+                <span class="btn-close">?</span>
+            </div>
+            <div class="content">
+                <p>> LOADING PYTHON MODULE...</p>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 90%"></div>
+                </div>
+                
+                <p>> LOADING AUTOMATION SCRIPTS...</p>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 80%; animation-duration: 3s;"></div>
+                </div>
+
+                <p>> LOADING RUST KNOWLEDGE...</p>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 20%; animation-duration: 1s;"></div>
+                </div>
+                
+                <p>> STATUS: <span class="glitch" style="color: red; background: white;">READY TO WORK</span></p>
+            </div>
+        </div>
+
+        <!-- JANELA 4: Conexões (Links Sociais) -->
+        <div class="window" style="max-width: 830px; width: 100%;">
+            <div class="title-bar">
+                <span>NETWORK_CONNECTIONS</span>
+                <span class="btn-close">X</span>
+            </div>
+            <div class="content" style="text-align: center;">
+                <p>CLIQUE PARA CONECTAR:</p>
+                <div class="social-icons">
+                    <!-- Twitter -->
+                    <a href="https://twitter.com/23GustavoGarcia" target="_blank" title="Twitter">
+                        <svg viewBox="0 0 24 24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+                    </a>
+                    <!-- GitHub -->
+                    <a href="https://github.com/GustavoGarciaPereira" target="_blank" title="GitHub">
+                        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    </a>
+                    <!-- Mastodon -->
+                    <a href="https://mastodon.social/@ovatsuGGarciaPereira" target="_blank" title="Mastodon">
+                        <svg viewBox="0 0 16 16"><path d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"/></svg>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/gustavo-garcia-pereira-078240143/" target="_blank" title="LinkedIn">
+                        <svg viewBox="0 0 30 30"><path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"></path></svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/channel/UCANZBbLMs16V4hakg5Zx91w" target="_blank" title="Youtube">
+                        <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                    </a>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <a href="https://gustavogarciapereira.github.io/meu_blog_com_zola/blog/" target="_blank" class="retro-btn">
+                         VISITAR MEU BLOG 
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- JSON-LD original mantido -->
+    <script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Gustavo G. Pereira",
+		"alternateName": "Gustavo Garcia Pereira",
+		"jobTitle": "Programador Python",
+		"description": "Programador Python com experiência em automação, Docker, HTML e Tailwind CSS; aprendendo Rust. Localizado no RS, Brasil.",
+		"url": "https://gustavogarciapereira.github.io/",
+		"image": "https://avatars.githubusercontent.com/u/19331198?v=4",
+		"sameAs": [
+		"https://twitter.com/23GustavoGarcia",
+		"https://github.com/GustavoGarciaPereira",
+		"https://mastodon.social/@ovatsuGGarciaPereira",
+		"https://www.linkedin.com/in/gustavo-garcia-pereira-078240143/",
+		"https://www.youtube.com/channel/UCANZBbLMs16V4hakg5Zx91w",
+		"https://gustavogarciapereira.github.io/meu_blog_com_zola/blog/"
+		],
+		"address": {
+		"@type": "PostalAddress",
+		"addressCountry": "BR",
+		"addressRegion": "RS"
+		},
+		"knowsAbout": ["Python", "Automação", "Docker", "HTML", "Tailwind CSS", "Rust", "Estatística"],
+		"worksFor": {
+		"@type": "Organization",
+		"name": "Freelance"
+		}
+	}
+	</script>
+
+</body>
+</html>
