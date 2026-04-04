@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos Chagas: A Tríplice Descoberta</title>
+    <meta name="description" content="Homenagem digital ao cientista brasileiro Carlos Chagas e sua tríplice descoberta na medicina.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cientifico-blue': '#1a365d',
+                        'nobel-gold': '#d4af37',
+                        'parchment': '#f4f1ea'
+                    },
+                    fontFamily: {
+                        'serif': ['Crimson Text', 'Georgia', 'serif'],
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔬</text></svg>">
+</head>
+<body class="bg-parchment font-sans text-gray-800">
+    <!-- Navegação Fixa -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div class="flex items-center justify-between">
+                    <a href="#hero" class="text-2xl font-bold text-cientifico-blue font-serif hover:text-nobel-gold transition-colors">
+                        Carlos Chagas
+                    </a>
+                    <button id="menu-toggle" class="md:hidden text-cientifico-blue">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="menu-items" class="hidden md:flex md:space-x-8 mt-4 md:mt-0">
+                    <a href="#hero" class="nav-link text-cientifico-blue hover:text-nobel-gold transition-colors">Início</a>
+                    <a href="#bio" class="nav-link text-cientifico-blue hover:text-nobel-gold transition-colors">Biografia</a>
+                    <a href="#descoberta" class="nav-link text-cientifico-blue hover:text-nobel-gold transition-colors">A Descoberta</a>
+                    <a href="#timeline" class="nav-link text-cientifico-blue hover:text-nobel-gold transition-colors">Linha do Tempo</a>
+                    <a href="#legado" class="nav-link text-cientifico-blue hover:text-nobel-gold transition-colors">Legado</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-cientifico-blue/10 to-nobel-gold/5 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%231a365d" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+
+        <div class="container mx-auto px-6 text-center z-10 fade-in">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-bold text-cientifico-blue font-serif mb-6">
+                    Carlos Chagas:<br>
+                    <span class="text-nobel-gold">A Tríplice Descoberta</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                    O único cientista na história a descobrir sozinho o parasita, o vetor e a doença - um feito inédito na medicina mundial.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#descoberta" class="inline-flex items-center justify-center px-8 py-3 text-lg font-semibold text-white bg-cientifico-blue hover:bg-cientifico-blue/90 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        Explorar Descoberta
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </a>
+                    <a href="#bio" class="inline-flex items-center justify-center px-8 py-3 text-lg font-semibold text-cientifico-blue bg-white hover:bg-gray-50 border-2 border-cientifico-blue rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        Conhecer a Trajetória
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#bio" class="text-cientifico-blue hover:text-nobel-gold transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7-7-7m7-7v14"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Biografia -->
+    <section id="bio" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold text-cientifico-blue font-serif mb-4">
+                        De Lassance à Fiocruz
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        A jornada do médico sanitarista que revolucionou a medicina tropical brasileira
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <div class="bg-parchment rounded-2xl p-8 shadow-xl border border-gray-200">
+                            <h3 class="text-2xl font-bold text-cientifico-blue font-serif mb-6">
+                                A Trajetória Científica
+                            </h3>
+                            <div class="space-y-4 text-gray-700">
+                                <p>
+                                    Carlos Justiniano Ribeiro Chagas (1878-1934) foi um médico, cientista e sanitarista brasileiro que realizou uma das maiores façanhas da história da medicina.
+                                </p>
+                                <p>
+                                    Em 1909, enquanto trabalhava em Lassance, Minas Gerais, combatendo uma epidemia de malária, Chagas fez uma descoberta monumental: identificou o parasita <em>Trypanosoma cruzi</em>, seu vetor (o inseto barbeiro) e a doença por ele causada, que mais tarde receberia seu nome - a Doença de Chagas.
+                                </p>
+                                <p>
+                                    Esta <strong>tríplice descoberta</strong> - patógeno, vetor e enfermidade - feita por um único pesquisador, é um feito único na história da medicina.
+                                </p>
+                                <p>
+                                    Chagas dedicou sua vida à saúde pública, dirigindo a campanha contra a peste bubônica no Rio de Janeiro e mais tarde tornando-se diretor do Instituto Oswaldo Cruz (Fiocruz).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fade-in" style="animation-delay: 0.2s">
+                        <div class="relative">
+                            <div class="bg-cientifico-blue rounded-2xl p-1 shadow-2xl">
+                                <div class="bg-parchment rounded-xl p-8 h-full min-h-[400px] flex flex-col items-center justify-center">
+                                    <div class="text-center mb-6">
+                                        <div class="text-6xl mb-4">🔬</div>
+                                        <h4 class="text-2xl font-bold text-cientifico-blue font-serif mb-2">
+                                            Laboratório de Campo
+                                        </h4>
+                                        <p class="text-gray-600">
+                                            Representação do trabalho de campo em Lassance
+                                        </p>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4 w-full max-w-sm">
+                                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-200 text-center">
+                                            <div class="text-3xl mb-2">🦟</div>
+                                            <p class="font-semibold text-cientifico-blue">Barbeiro</p>
+                                            <p class="text-sm text-gray-600">Vetor</p>
+                                        </div>
+                                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-200 text-center">
+                                            <div class="text-3xl mb-2">🦠</div>
+                                            <p class="font-semibold text-cientifico-blue">T. cruzi</p>
+                                            <p class="text-sm text-gray-600">Parasita</p>
+                                        </div>
+                                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-200 text-center">
+                                            <div class="text-3xl mb-2">❤️</div>
+                                            <p class="font-semibold text-cientifico-blue">Coração</p>
+                                            <p class="text-sm text-gray-600">Órgão afetado</p>
+                                        </div>
+                                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-200 text-center">
+                                            <div class="text-3xl mb-2">🏆</div>
+                                            <p class="font-semibold text-cientifico-blue">Prêmio</p>
+                                            <p class="text-sm text-gray-600">Reconhecimento</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A Descoberta -->
+    <section id="descoberta" class="py-20 bg-gradient-to-b from-white to-parchment">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold text-cientifico-blue font-serif mb-4">
+                        A Tríplice Descoberta
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Três componentes interligados que formam um dos maiores feitos da medicina tropical
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1: O Parasita -->
+                    <div class="discovery-card fade-in">
+                        <div class="discovery-card-inner">
+                            <div class="text-center mb-6">
+                                <div class="text-5xl mb-4">🦠</div>
+                                <h3 class="text-2xl font-bold text-cientifico-blue font-serif">
+                                    O Parasita
+                                </h3>
+                                <p class="text-nobel-gold font-semibold mt-2">
+                                    Trypanosoma cruzi
+                                </p>
+                            </div>
+                            <p class="text-gray-700 mb-6">
+                                Descoberto em 1909, este protozoário flagelado recebeu o nome em homenagem a Oswaldo Cruz. Ele invade células cardíacas e digestivas, causando danos crônicos.
+                            </p>
+                            <div class="mt-6 pt-6 border-t border-gray-200">
+                                <h4 class="font-bold text-cientifico-blue mb-2">Características:</h4>
+                                <ul class="space-y-2 text-sm text-gray-600">
+                                    <li class="flex items-start">
+                                        <span class="text-nobel-gold mr-2">•</span>
+                                        Forma de "C" ou "S" característica
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-nobel-gold mr-2">•</span>
+                                        Ciclo de vida complexo
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-nobel-gold mr-2">•</span>
+                                        Transmitido por vetores
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: O Vetor -->
+                    <div class="discovery-card fade-in" style="animation-delay: 0.2s">
+                        <div class="discovery-card-inner">
+                            <div class="text-center mb-6">
+                                <div class="text-5xl mb-4">🦟</div>
+                                <h3 class="text-2xl font-bold text-cientifico-blue font-serif">
+                                    O Vetor
+                                </h3>
+                                <p class="text-nobel-gold font-semibold mt-2">
+                                    Barbeiro (Triatomíneo)
+                                </p>
+                            </div>
+                            <p class="text-gray-700 mb-6">
+                                Inseto hematófago que vive em frestas de casas de pau-a-pique. Transmite o parasita através das fezes depositadas durante a picada, quando a pessoa coça o local.
+                            </p>
+                            <div class="mt-6 pt-6 border-t border-gray-200">
+                                <h4 class="font-bold text-cientifico-blue mb-2">Características:</h4>
+                                <ul class="space-y-2 text-sm text-gray-600">
+                                    <li class="flex items-start">
+                                        <span class="text-nobel-gold mr-2">•</span>
+                                        Atividade noturna
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-nobel-gold mr-2">•</span>
+                                        Habitat domiciliar
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-nobel-gold mr-2">•</span>
+                                        Transmissão por fezes
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: A Doença -->
+                    <div class="discovery-card fade-in" style="animation-delay: 0.4s">
+                        <div class="discovery-card-inner">
+                            <div class="text-center mb-6">
+                                <div class="text-5xl mb-4">❤️</div>
+                                <h3 class="text-2xl font-bold text-cientifico-blue font-serif">
+                                    A Doença
+                                </h3>
+                                <p class="text-nobel-gold font-semibold mt-2">
+                                    Doença de Chagas
+                                </p>
+                            </div>
+                            <p class="text-gray-700 mb-6">
+                                Doença tropical negligenciada que afeta milhões na América Latina. Tem fase aguda (febre, inchaço) e crônica (cardíaca, digestiva), podendo levar à morte por insuficiência cardíaca.
+                            </p>
+                            <div class="mt-6 pt-6 border-t border-gray-200">
+                                <h4 class="font-bold text-cientifico-blue mb-2">Fases:</h4>
+                                <ul class="space-y-2 text-sm text-gray-600">
+                                    <li class="flex items-start">
+                                        <span class="text-nobel-gold mr-2">•</span>
+                                        Aguda (sintomática)
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-nobel-gold mr-2">•</span>
+                                        Latente (assintomática)
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-nobel-gold mr-2">•</span>
+                                        Crônica (cardíaca/digestiva)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center fade-in">
+                    <div class="inline-block bg-cientifico-blue/10 rounded-xl p-8 max-w-2xl mx-auto">
+                        <h4 class="text-2xl font-bold text-cientifico-blue font-serif mb-4">
+                            Um Feito Inédito
+                        </h4>
+                        <p class="text-gray-700 text-lg">
+                            "Carlos Chagas é o único cientista na história da medicina a descrever completamente uma doença infecciosa: seu agente patogênico, seu vetor e suas manifestações clínicas."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Linha do Tempo -->
+    <section id="timeline" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold text-cientifico-blue font-serif mb-4">
+                        Linha do Tempo
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Marcos importantes da vida e obra de Carlos Chagas
+                    </p>
+                </div>
+
+                <div class="relative">
+                    <!-- Linha vertical -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-cientifico-blue to-nobel-gold hidden md:block"></div>
+
+                    <!-- Eventos -->
+                    <div class="space-y-12">
+                        <!-- Evento 1 -->
+                        <div class="timeline-event fade-in">
+                            <div class="timeline-dot bg-cientifico-blue"></div>
+                            <div class="timeline-content md:text-right">
+                                <div class="timeline-date text-nobel-gold font-bold">1878</div>
+                                <h3 class="text-xl font-bold text-cientifico-blue font-serif mb-2">
+                                    Nascimento
+                                </h3>
+                                <p class="text-gray-700">
+                                    Carlos Justiniano Ribeiro Chagas nasce em Oliveira, Minas Gerais.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Evento 2 -->
+                        <div class="timeline-event fade-in" style="animation-delay: 0.1s">
+                            <div class="timeline-dot bg-cientifico-blue"></div>
+                            <div class="timeline-content md:text-left">
+                                <div class="timeline-date text-nobel-gold font-bold">1903</div>
+                                <h3 class="text-xl font-bold text-cientifico-blue font-serif mb-2">
+                                    Formação Médica
+                                </h3>
+                                <p class="text-gray-700">
+                                    Forma-se pela Faculdade de Medicina do Rio de Janeiro e inicia carreira na saúde pública.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Evento 3 -->
+                        <div class="timeline-event fade-in" style="animation-delay: 0.2s">
+                            <div class="timeline-dot bg-cientifico-blue"></div>
+                            <div class="timeline-content md:text-right">
+                                <div class="timeline-date text-nobel-gold font-bold">1909</div>
+                                <h3 class="text-xl font-bold text-cientifico-blue font-serif mb-2">
+                                    A Grande Descoberta
+                                </h3>
+                                <p class="text-gray-700">
+                                    Em Lassance, descobre o Trypanosoma cruzi, seu vetor e a doença - a tríplice descoberta.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Evento 4 -->
+                        <div class="timeline-event fade-in" style="animation-delay: 0.3s">
+                            <div class="timeline-dot bg-cientifico-blue"></div>
+                            <div class="timeline-content md:text-left">
+                                <div class="timeline-date text-nobel-gold font-bold">1917</div>
+                                <h3 class="text-xl font-bold text-cientifico-blue font-serif mb-2">
+                                    Diretor da Fiocruz
+                                </h3>
+                                <p class="text-gray-700">
+                                    Assume a direção do Instituto Oswaldo Cruz após a morte de Oswaldo Cruz.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Evento 5 -->
+                        <div class="timeline-event fade-in" style="animation-delay: 0.4s">
+                            <div class="timeline-dot bg-cientifico-blue"></div>
+                            <div class="timeline-content md:text-right">
+                                <div class="timeline-date text-nobel-gold font-bold">1921</div>
+                                <h3 class="text-xl font-bold text-cientifico-blue font-serif mb-2">
+                                    Reconhecimento Internacional
+                                </h3>
+                                <p class="text-gray-700">
+                                    Indicado ao Prêmio Nobel de Medicina por sua descoberta da doença de Chagas.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Evento 6 -->
+                        <div class="timeline-event fade-in" style="animation-delay: 0.5s">
+                            <div class="timeline-dot bg-cientifico-blue"></div>
+                            <div class="timeline-content md:text-left">
+                                <div class="timeline-date text-nobel-gold font-bold">1934</div>
+                                <h3 class="text-xl font-bold text-cientifico-blue font-serif mb-2">
+                                    Falecimento
+                                </h3>
+                                <p class="text-gray-700">
+                                    Morre no Rio de Janeiro, deixando um legado extraordinário para a medicina mundial.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legado -->
+    <section id="legado" class="py-20 bg-gradient-to-b from-parchment to-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold text-cientifico-blue font-serif mb-4">
+                        Legado Científico
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        O impacto duradouro do trabalho de Carlos Chagas na ciência e saúde pública
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="fade-in">
+                        <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-200 h-full">
+                            <div class="flex items-center mb-6">
+                                <div class="text-4xl mr-4">🏛️</div>
+                                <h3 class="text-2xl font-bold text-cientifico-blue font-serif">
+                                    Instituto de Pesquisa
+                                </h3>
+                            </div>
+                            <p class="text-gray-700 mb-6">
+                                O Instituto Carlos Chagas (ICC) da Fiocruz Paraná mantém viva sua tradição de excelência em pesquisa, dedicando-se ao estudo de doenças negligenciadas e biotecnologia.
+                            </p>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <span class="text-nobel-gold mr-3">✓</span>
+                                    <span>Pesquisa em doenças tropicais</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-nobel-gold mr-3">✓</span>
+                                    <span>Desenvolvimento de diagnósticos</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-nobel-gold mr-3">✓</span>
+                                    <span>Formação de pesquisadores</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fade-in" style="animation-delay: 0.2s">
+                        <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-200 h-full">
+                            <div class="flex items-center mb-6">
+                                <div class="text-4xl mr-4">🌎</div>
+                                <h3 class="text-2xl font-bold text-cientifico-blue font-serif">
+                                    Impacto Global
+                                </h3>
+                            </div>
+                            <p class="text-gray-700 mb-6">
+                                A doença de Chagas afeta 6-7 milhões de pessoas em 21 países das Américas. O trabalho de Chagas estabeleceu as bases para o controle e pesquisa contínua desta doença tropical negligenciada.
+                            </p>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <span class="text-nobel-gold mr-3">✓</span>
+                                    <span>Doença tropical negligenciada</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-nobel-gold mr-3">✓</span>
+                                    <span>Endêmica na América Latina</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-nobel-gold mr-3">✓</span>
+                                    <span>Desafio de saúde pública global</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center fade-in">
+                    <div class="inline-block max-w-3xl mx-auto">
+                        <blockquote class="text-2xl font-serif text-gray-700 italic mb-6">
+                            "O exemplo de Carlos Chagas mostra como a dedicação à ciência pode transformar a saúde pública e deixar um legado duradouro para a humanidade."
+                        </blockquote>
+                        <div class="text-lg text-gray-600">
+                            — Homenagem ao legado científico brasileiro
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-cientifico-blue text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div class="mb-8 md:mb-0">
+                        <h3 class="text-2xl font-bold font-serif mb-4">
+                            Carlos Chagas
+                        </h3>
+                        <p class="text-gray-300 max-w-md">
+                            Homenagem digital ao cientista brasileiro que realizou a tríplice descoberta na medicina tropical.
+                        </p>
+                    </div>
+
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-300 hover:text-nobel-gold transition-colors">
+                            <span class="sr-only">Fontes Históricas</span>
+                            📚
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-nobel-gold transition-colors">
+                            <span class="sr-only">Fiocruz</span>
+                            🔬
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-nobel-gold transition-colors">
+                            <span class="sr-only">Acervo Digital</span>
+                            🖼️
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+                    <p>
+                        Este site é uma homenagem educacional. Referências bibliográficas disponíveis mediante solicitação.
+                    </p>
+                    <p class="mt-2 text-sm">
+                        Desenvolvido com respeito à história da ciência brasileira • 2024
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
