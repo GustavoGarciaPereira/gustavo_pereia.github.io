@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magical Night — A Jornada Noturna</title>
+
+  <!-- Fontes: Playfair Display + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN Play -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      /* Desativa preflight para não conflitar com styles.css */
+      corePlugins: { preflight: false },
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans:  ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            night: {
+              950: '#060E10',
+              900: '#091A1A',
+              800: '#0B1315',
+              700: '#0E1A1E',
+              600: '#121F23',
+            },
+            emerald: {
+              glow:  '#3DDA84',
+              soft:  '#4FE896',
+              dim:   '#2AAF67',
+            },
+            moon:    '#D4E89A',
+            firefly: '#E8F569',
+            fog:     '#E0E6E6',
+          },
+          animation: {
+            'pulse-dot':  'pulse-dot  2s   ease-in-out infinite',
+            'firefly-1':  'firefly    3.5s ease-in-out infinite',
+            'firefly-2':  'firefly    5s   ease-in-out infinite 1.2s',
+            'firefly-3':  'firefly    4s   ease-in-out infinite 0.6s',
+            'firefly-4':  'firefly    6s   ease-in-out infinite 2.3s',
+            'firefly-5':  'firefly    4.5s ease-in-out infinite 3.1s',
+            'firefly-6':  'firefly    3.8s ease-in-out infinite 1.8s',
+            'float':      'float      7s   ease-in-out infinite',
+            'fade-up':    'fade-up    0.9s cubic-bezier(0.22,1,0.36,1) both',
+          'card-reveal':'card-reveal 0.8s cubic-bezier(0.22,1,0.36,1) both',
+          },
+          keyframes: {
+            'pulse-dot': {
+              '0%, 100%': { opacity: '1',   transform: 'scale(1)'  },
+              '50%':      { opacity: '0.4', transform: 'scale(0.6)'},
+            },
+            'firefly': {
+              '0%,100%': { opacity: '0',   transform: 'scale(0.4) translateY(0px)'    },
+              '40%':     { opacity: '0.9', transform: 'scale(1)   translateY(-6px)'   },
+              '60%':     { opacity: '0.7', transform: 'scale(0.9) translateY(-10px)'  },
+            },
+            'float': {
+              '0%,100%': { transform: 'translateY(0px)'   },
+              '50%':     { transform: 'translateY(-12px)' },
+            },
+            'fade-up': {
+              '0%':   { opacity: '0', transform: 'translateY(28px)' },
+              '100%': { opacity: '1', transform: 'translateY(0px)'  },
+            },
+            'card-reveal': {
+              '0%':   { opacity: '0', transform: 'translateY(44px) scale(0.96)' },
+              '100%': { opacity: '1', transform: 'translateY(0)     scale(1)'   },
+            },
+          },
+          boxShadow: {
+            'glow-sm':  '0 0 12px rgba(61,218,132,0.25)',
+            'glow-md':  '0 0 28px rgba(61,218,132,0.40)',
+            'glow-lg':  '0 0 52px rgba(61,218,132,0.55)',
+            'glow-xl':  '0 0 80px rgba(61,218,132,0.35), 0 0 160px rgba(61,218,132,0.15)',
+          },
+          transitionTimingFunction: {
+            'magical': 'cubic-bezier(0.22, 1, 0.36, 1)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- styles.css → noise texture + ambient glow em body::before / body::after -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Ajustes pontuais que o Tailwind não cobre nativamente aqui -->
+  <style>
+    /* Gradiente de texto do título — Tailwind não tem clip-text via utility */
+    .hero-title-gradient {
+      background: linear-gradient(
+        138deg,
+        #E0E6E6  0%,
+        #D4E89A 45%,
+        #3DDA84 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glow atmosférico atrás do título */
+    .hero-spotlight {
+      background: radial-gradient(
+        ellipse 65% 55% at 50% 60%,
+        rgba(61, 218, 132, 0.10) 0%,
+        rgba(9,  26,  26, 0   ) 70%
+      );
+    }
+
+    /* Linha decorativa com gradiente */
+    .hero-divider {
+      width: 56px;
+      height: 1px;
+      background: linear-gradient(90deg, #3DDA84, transparent);
+    }
+
+    /* Borda sutil no hero com gradiente */
+    .hero-border-glow {
+      border: 1px solid rgba(61, 218, 132, 0.10);
+    }
+
+    /* ─── Header dinâmico ──────────────────────────── */
+
+    /*
+      Estado base: totalmente transparente.
+      Todas as transições ficam declaradas aqui
+      para que os dois sentidos (scroll down/up) sejam suaves.
+    */
+    #site-header {
+      transition:
+        background-color 300ms ease,
+        backdrop-filter   300ms ease,
+        -webkit-backdrop-filter 300ms ease,
+        border-color      300ms ease,
+        padding-top       300ms ease,
+        padding-bottom    300ms ease;
+    }
+
+    /* Estado "no topo" */
+    #site-header {
+      background-color: transparent;
+      border-bottom: 1px solid transparent;
+      -webkit-backdrop-filter: blur(0px);
+      backdrop-filter: blur(0px);
+    }
+
+    /* Estado após scroll — classe adicionada via JS */
+    #site-header.scrolled {
+      background-color: rgba(9, 26, 26, 0.75);
+      border-bottom-color: rgba(255, 255, 255, 0.06);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      backdrop-filter: blur(16px) saturate(160%);
+    }
+
+    /*
+      Shrink do padding quando scrollado.
+      Usando custom properties para não brigarem
+      com as classes Tailwind do elemento.
+    */
+    #site-header .header-inner {
+      transition: padding-top 300ms ease, padding-bottom 300ms ease;
+      padding-top:    1.5rem;   /* py-6 */
+      padding-bottom: 1.5rem;
+    }
+    #site-header.scrolled .header-inner {
+      padding-top:    0.875rem; /* ~py-3.5 */
+      padding-bottom: 0.875rem;
+    }
+
+    /* Glow no texto dos links ao hover */
+    .nav-link {
+      transition: color 250ms ease, text-shadow 250ms ease;
+    }
+    .nav-link:hover {
+      color: #3DDA84;
+      text-shadow: 0 0 12px rgba(61, 218, 132, 0.55);
+    }
+
+    /* Logo — brilho suave no hover */
+    .logo-link {
+      transition: opacity 250ms ease, text-shadow 250ms ease;
+    }
+    .logo-link:hover {
+      text-shadow: 0 0 20px rgba(212, 232, 154, 0.40);
+    }
+
+    /* Indicador de link ativo (pseudo-elemento abaixo do texto) */
+    .nav-link {
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, #3DDA84, transparent);
+      transition: width 300ms ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ─── Glassmorphism Cards ───────────────────────── */
+
+    /*
+      Borda com gradiente simulando reflexo de luar nas arestas.
+      Usa pseudo-elemento ::before para não conflitar com border do Tailwind.
+    */
+    .glass-card {
+      position: relative;
+      isolation: isolate;
+    }
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.10) 0%,
+        rgba(255,255,255,0.03) 40%,
+        rgba(61,218,132,0.06) 100%
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    .glass-card:hover::before {
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.18) 0%,
+        rgba(212,232,154,0.08) 50%,
+        rgba(61,218,132,0.15) 100%
+      );
+    }
+
+    /* Névoa interna que sobe no hover — simulando vapor de chão de floresta */
+    .glass-card .card-fog {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(
+        ellipse 90% 60% at 50% 110%,
+        rgba(61, 218, 132, 0.07) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+    .glass-card:hover .card-fog { opacity: 1; }
+
+    /* Ícone: detalhe visual topo — animação de glow no hover do card pai */
+    .glass-card .card-icon {
+      transition: box-shadow 0.5s ease, border-color 0.5s ease;
+    }
+    .glass-card:hover .card-icon {
+      box-shadow: 0 0 16px rgba(232, 245, 105, 0.25);
+      border-color: rgba(232, 245, 105, 0.35);
+    }
+
+    /* Linha decorativa no card */
+    .card-divider {
+      width: 36px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(61,218,132,0.5), transparent);
+      transition: width 0.5s ease;
+    }
+    .glass-card:hover .card-divider { width: 52px; }
+
+    /* ─── Seção Manifesto ──────────────────────────── */
+
+    .section-manifesto {
+      background:
+        radial-gradient(
+          ellipse 60% 50% at 50% 55%,
+          rgba(212, 232, 154, 0.045) 0%,
+          rgba(9,  26,  26,  0     ) 65%
+        ),
+        #060E10;
+    }
+
+    /* Citação: estado inicial (oculta para o Observer) */
+    .manifesto-quote {
+      opacity: 0;
+      transform: translateY(32px);
+      transition:
+        opacity   1.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .manifesto-quote.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Linha ornamental acima da citação */
+    .manifesto-ornament {
+      opacity: 0;
+      transition: opacity 1.2s ease 0.3s, width 1.2s ease 0.3s;
+      width: 0;
+    }
+    .manifesto-ornament.visible {
+      opacity: 1;
+      width: 48px;
+    }
+
+    /* Autoria — atraso maior para entrar depois da citação */
+    .manifesto-author {
+      opacity: 0;
+      transition: opacity 1.4s ease 0.8s;
+    }
+    .manifesto-author.visible { opacity: 1; }
+
+    /* ─── Footer ─────────────────────────────────── */
+
+    /* Link de rede social no footer */
+    .footer-social {
+      transition: color 250ms ease, text-shadow 250ms ease;
+    }
+    .footer-social:hover {
+      color: #3DDA84;
+      text-shadow: 0 0 10px rgba(61, 218, 132, 0.50);
+    }
+
+    /* Seção Pilares — background ligeiramente diferente do Hero */
+    .section-pilares {
+      background:
+        radial-gradient(ellipse 80% 40% at 50% 0%,
+          rgba(14, 26, 30, 0.9) 0%,
+          #0B1315 60%);
+    }
+  </style>
+</head>
+
+<body class="bg-night-800 text-fog font-sans overflow-x-hidden">
+
+  <!-- ══════════════════════════════════════════════════════
+       HEADER — fixed, dinâmico via .scrolled
+  ══════════════════════════════════════════════════════ -->
+  <header id="site-header" class="fixed top-0 left-0 w-full z-50">
+    <div class="header-inner flex items-center justify-between px-6 md:px-10 max-w-7xl mx-auto">
+
+      <!-- Logo -->
+      <a href="#hero" class="logo-link flex items-center gap-2.5 no-underline" aria-label="Voltar ao topo">
+        <!-- Ponto-vaga-lume ao lado do logo -->
+        <span
+          aria-hidden="true"
+          class="w-1.5 h-1.5 rounded-full bg-emerald-glow
+                 shadow-[0_0_6px_#3DDA84] animate-pulse-dot"
+        ></span>
+        <span
+          class="font-serif italic text-xl tracking-tight text-white/90
+                 select-none"
+        >
+          Jornada
+        </span>
+      </a>
+
+      <!-- Links de navegação — desktop -->
+      <nav aria-label="Navegação principal">
+        <ul class="hidden sm:flex items-center gap-8 list-none m-0 p-0">
+          <li>
+            <a href="#pilares" class="nav-link font-sans font-light text-sm text-white/65 no-underline">
+              O Caminho
+            </a>
+          </li>
+          <li>
+            <a href="#tokens" class="nav-link font-sans font-light text-sm text-white/65 no-underline">
+              A Cabana
+            </a>
+          </li>
+          <li>
+            <a href="#tipografia" class="nav-link font-sans font-light text-sm text-white/65 no-underline">
+              Silêncio
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- CTA compacto (visível só em desktop) -->
+      <a
+        href="#pilares"
+        class="hidden md:inline-flex items-center gap-1.5
+               font-sans font-medium text-xs tracking-wide
+               text-night-950 bg-emerald-glow
+               px-4 py-2 rounded-md
+               transition-all duration-300
+               hover:bg-emerald-soft hover:shadow-[0_0_16px_rgba(61,218,132,0.4)]
+               active:scale-[0.97]"
+      >
+        Explorar
+        <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 6h8M8 4l2 2-2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <!-- Botão hamburguer — mobile -->
+      <button
+        id="menu-toggle"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        class="sm:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8"
+      >
+        <span class="block w-5 h-px bg-white/70 transition-all duration-300 origin-center" id="bar1"></span>
+        <span class="block w-5 h-px bg-white/70 transition-all duration-300"               id="bar2"></span>
+        <span class="block w-3.5 h-px bg-white/70 transition-all duration-300 self-end"    id="bar3"></span>
+      </button>
+
+    </div>
+
+    <!-- Menu mobile — oculto por padrão -->
+    <nav
+      id="mobile-menu"
+      aria-label="Menu mobile"
+      class="sm:hidden overflow-hidden max-h-0 transition-[max-height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+    >
+      <ul class="flex flex-col px-6 pb-5 pt-2 gap-5 list-none m-0 p-0
+                 border-t border-white/[0.06] bg-night-900/80 backdrop-blur-md">
+        <li><a href="#pilares"   class="nav-link font-sans font-light text-sm text-white/65 no-underline block py-1">O Caminho</a></li>
+        <li><a href="#tokens"    class="nav-link font-sans font-light text-sm text-white/65 no-underline block py-1">A Cabana</a></li>
+        <li><a href="#tipografia"class="nav-link font-sans font-light text-sm text-white/65 no-underline block py-1">Silêncio</a></li>
+        <li>
+          <a href="#pilares" class="inline-flex items-center gap-1.5 font-sans font-medium text-xs
+                                    text-night-950 bg-emerald-glow px-4 py-2 rounded-md mt-1
+                                    transition-all duration-300 hover:bg-emerald-soft">
+            Explorar →
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /HEADER -->
+
+
+  <!-- ══════════════════════════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════════════════════════ -->
+  <section
+    id="hero"
+    class="relative min-h-screen flex flex-col items-center justify-center bg-night-900 overflow-hidden"
+  >
+
+    <!-- ── Vaga-lumes decorativos ────────────────────────── -->
+    <!-- Cada ponto é independente, pointer-events:none, não bloqueia cliques -->
+    <span aria-hidden="true" class="pointer-events-none absolute top-[18%] left-[12%]  w-1.5 h-1.5 rounded-full bg-firefly shadow-[0_0_8px_#E8F569]  animate-firefly-1 opacity-0"></span>
+    <span aria-hidden="true" class="pointer-events-none absolute top-[32%] left-[7%]   w-1   h-1   rounded-full bg-emerald-glow shadow-[0_0_6px_#3DDA84] animate-firefly-2 opacity-0"></span>
+    <span aria-hidden="true" class="pointer-events-none absolute top-[55%] left-[16%]  w-1.5 h-1.5 rounded-full bg-moon      shadow-[0_0_8px_#D4E89A]  animate-firefly-3 opacity-0"></span>
+    <span aria-hidden="true" class="pointer-events-none absolute top-[22%] right-[10%] w-1   h-1   rounded-full bg-emerald-glow shadow-[0_0_6px_#3DDA84] animate-firefly-4 opacity-0"></span>
+    <span aria-hidden="true" class="pointer-events-none absolute top-[42%] right-[7%]  w-1.5 h-1.5 rounded-full bg-firefly shadow-[0_0_8px_#E8F569]  animate-firefly-5 opacity-0"></span>
+    <span aria-hidden="true" class="pointer-events-none absolute top-[68%] right-[14%] w-1   h-1   rounded-full bg-moon      shadow-[0_0_6px_#D4E89A]  animate-firefly-6 opacity-0"></span>
+
+    <!-- ── Spotlight / névoa atrás do conteúdo ──────────── -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 hero-spotlight"></div>
+
+    <!-- ── Linha horizontal sutil no topo ───────────────── -->
+    <div aria-hidden="true" class="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-emerald-glow/20 to-transparent"></div>
+
+    <!-- ════════════════════════════════════════
+         CONTEÚDO PRINCIPAL
+    ════════════════════════════════════════ -->
+    <div class="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto gap-7">
+
+      <!-- Badge -->
+      <span
+        class="animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.1s_both]
+               inline-flex items-center gap-2
+               px-3 py-1 rounded-full
+               border border-emerald-glow/25
+               bg-emerald-glow/[0.06]
+               text-emerald-glow text-[0.68rem] font-medium tracking-[0.14em] uppercase"
+      >
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-glow shadow-glow-sm animate-pulse-dot"></span>
+        Magical Night &nbsp;·&nbsp; Dreamcore
+      </span>
+
+      <!-- Título Principal -->
+      <h1
+        class="animate-[fade-up_0.9s_cubic-bezier(0.22,1,0.36,1)_0.25s_both]
+               font-serif font-normal leading-[1.1] tracking-tight
+               text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem]
+               hero-title-gradient"
+      >
+        A Jornada<br />
+        <em class="font-serif not-italic">Noturna</em>
+      </h1>
+
+      <!-- Linha decorativa centralizada -->
+      <div
+        class="animate-[fade-up_0.9s_cubic-bezier(0.22,1,0.36,1)_0.35s_both]
+               mx-auto hero-divider"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Subtítulo -->
+      <p
+        class="animate-[fade-up_0.9s_cubic-bezier(0.22,1,0.36,1)_0.45s_both]
+               font-sans font-light text-lg md:text-xl leading-[1.8]
+               text-white/60 max-w-[42ch]"
+      >
+        Adentre a clareira onde o luar pousa sobre as folhas úmidas —
+        um espaço entre o silêncio e o sonho,
+        <em class="not-italic text-moon/80">piscado pelos vaga-lumes.</em>
+      </p>
+
+      <!-- ── Botões ─────────────────────────────────────── -->
+      <div
+        class="animate-[fade-up_0.9s_cubic-bezier(0.22,1,0.36,1)_0.55s_both]
+               flex flex-wrap items-center justify-center gap-3 mt-2"
+      >
+
+        <!-- CTA Principal — Botão "Luar" com glow mágico -->
+        <a
+          href="#pilares"
+          class="group
+                 inline-flex items-center gap-2
+                 bg-emerald-glow text-night-950
+                 font-sans font-medium text-sm tracking-wide
+                 px-7 py-3.5 rounded-md
+                 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+                 hover:bg-emerald-soft
+                 hover:shadow-[0_0_30px_rgba(61,218,132,0.55),_0_0_60px_rgba(61,218,132,0.25)]
+                 active:scale-[0.97]"
+        >
+          Explorar o Caminho
+          <!-- Seta que avança no hover -->
+          <svg
+            class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+            viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <!-- Botão Secundário / Ghost -->
+        <a
+          href="#tokens"
+          class="inline-flex items-center gap-2
+                 bg-transparent text-fog/80
+                 font-sans font-light text-sm tracking-wide
+                 px-7 py-3.5 rounded-md
+                 border border-white/[0.08]
+                 transition-all duration-300
+                 hover:border-white/20 hover:text-fog hover:bg-white/[0.04]
+                 active:scale-[0.97]"
+        >
+          Ver tokens
+        </a>
+      </div>
+
+    </div>
+    <!-- /conteúdo principal -->
+
+    <!-- ── Indicador de scroll ───────────────────────────── -->
+    <div
+      aria-hidden="true"
+      class="animate-[fade-up_1s_cubic-bezier(0.22,1,0.36,1)_0.9s_both]
+             absolute bottom-10 left-1/2 -translate-x-1/2
+             flex flex-col items-center gap-2 animate-float"
+    >
+      <span class="text-[0.6rem] font-medium tracking-[0.2em] uppercase text-white/25">
+        Scroll
+      </span>
+      <svg class="w-4 h-5 text-white/20" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="7" y="5" width="2" height="5" rx="1" fill="currentColor" class="animate-bounce"/>
+      </svg>
+    </div>
+
+    <!-- ── Linha horizontal sutil no rodapé do hero ──────── -->
+    <div aria-hidden="true" class="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent"></div>
+
+  </section>
+  <!-- /HERO SECTION -->
+
+
+  <!-- ══════════════════════════════════════════════════════
+       PILARES — GLASSMORPHISM CARDS (Passo 3)
+  ══════════════════════════════════════════════════════ -->
+  <section
+    id="pilares"
+    class="relative section-pilares overflow-hidden py-28 px-6"
+  >
+    <!-- Separador luminoso no topo da seção -->
+    <div aria-hidden="true" class="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-emerald-glow/15 to-transparent"></div>
+
+    <!-- Vaga-lumes de fundo da seção -->
+    <span aria-hidden="true" class="pointer-events-none absolute top-[20%] left-[4%]  w-1   h-1   rounded-full bg-firefly  shadow-[0_0_6px_#E8F569] animate-firefly-3 opacity-0"></span>
+    <span aria-hidden="true" class="pointer-events-none absolute top-[60%] right-[5%] w-1.5 h-1.5 rounded-full bg-moon     shadow-[0_0_8px_#D4E89A] animate-firefly-5 opacity-0"></span>
+    <span aria-hidden="true" class="pointer-events-none absolute top-[80%] left-[20%] w-1   h-1   rounded-full bg-emerald-glow shadow-[0_0_6px_#3DDA84] animate-firefly-1 opacity-0"></span>
+
+    <div class="relative z-10 max-w-6xl mx-auto">
+
+      <!-- ── Cabeçalho da Seção ──────────────────────────── -->
+      <div class="text-center mb-16">
+        <p
+          class="inline-block text-[0.68rem] font-medium tracking-[0.18em] uppercase
+                 text-emerald-glow/70 mb-5"
+        >
+          Os Três Pilares
+        </p>
+        <h2
+          class="font-serif font-normal text-4xl md:text-5xl tracking-tight
+                 text-fog leading-[1.15] mb-5"
+        >
+          Névoa, Silêncio<br />
+          <em class="text-moon/80">e Luar</em>
+        </h2>
+        <p class="font-sans font-light text-white/50 text-base max-w-[44ch] mx-auto leading-relaxed">
+          Três forças que governam a floresta noturna — cada uma revela
+          uma camada diferente do que existe além da escuridão.
+        </p>
+      </div>
+
+      <!-- ── Grid de Cards ──────────────────────────────── -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+
+        <!-- ════════ CARD 1 — Silêncio ════════ -->
+        <article
+          class="glass-card group
+                 rounded-2xl p-8
+                 bg-white/[0.04] backdrop-blur-md
+                 transition-all duration-500 ease-out
+                 hover:-translate-y-2
+                 hover:shadow-[0_16px_48px_rgba(61,218,132,0.12),_inset_0_1px_0_rgba(255,255,255,0.08)]
+                 is-visible"
+          style="animation: card-reveal 0.8s cubic-bezier(0.22,1,0.36,1) 0.1s both;"
+        >
+          <!-- Névoa interna (efeito vapor) -->
+          <div class="card-fog" aria-hidden="true"></div>
+
+          <!-- Ícone — Lua Crescente -->
+          <div
+            class="card-icon relative z-10
+                   w-11 h-11 rounded-xl mb-7
+                   border border-firefly/20
+                   bg-firefly/[0.05]
+                   flex items-center justify-center"
+          >
+            <svg class="w-5 h-5 text-firefly" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- Textos -->
+          <div class="relative z-10">
+            <h3 class="font-serif font-normal text-2xl text-fog leading-tight mb-1">
+              O Silêncio
+            </h3>
+            <p class="font-serif italic text-moon/60 text-base mb-5">
+              que revela
+            </p>
+            <div class="card-divider mb-5" aria-hidden="true"></div>
+            <p class="font-sans font-light text-sm leading-[1.85] text-white/55">
+              No coração da floresta, o barulho cede. O que resta é clareza —
+              a mente encontra o que os sentidos ignoram. Apenas no silêncio
+              absoluto o real se torna audível.
+            </p>
+          </div>
+
+          <!-- Tag inferior -->
+          <div class="relative z-10 mt-8 flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-firefly/60"></span>
+            <span class="text-[0.65rem] tracking-[0.14em] uppercase text-white/30 font-medium">
+              Introspecção
+            </span>
+          </div>
+        </article>
+
+
+        <!-- ════════ CARD 2 — Névoa ════════ -->
+        <article
+          class="glass-card group
+                 rounded-2xl p-8
+                 bg-white/[0.04] backdrop-blur-md
+                 transition-all duration-500 ease-out
+                 hover:-translate-y-2
+                 hover:shadow-[0_16px_48px_rgba(212,232,154,0.10),_inset_0_1px_0_rgba(255,255,255,0.08)]"
+          style="animation: card-reveal 0.8s cubic-bezier(0.22,1,0.36,1) 0.25s both;"
+        >
+          <!-- Névoa interna -->
+          <div class="card-fog" style="background: radial-gradient(ellipse 90% 60% at 50% 110%, rgba(212,232,154,0.07) 0%, transparent 70%);" aria-hidden="true"></div>
+
+          <!-- Ícone — Ondas de névoa -->
+          <div
+            class="card-icon relative z-10
+                   w-11 h-11 rounded-xl mb-7
+                   border border-firefly/20
+                   bg-firefly/[0.05]
+                   flex items-center justify-center"
+          >
+            <svg class="w-5 h-5 text-firefly" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M3 8c1.5 0 1.5-2 3-2s1.5 2 3 2 1.5-2 3-2 1.5 2 3 2 1.5-2 3-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M3 13c1.5 0 1.5-2 3-2s1.5 2 3 2 1.5-2 3-2 1.5 2 3 2 1.5-2 3-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M3 18c1.5 0 1.5-2 3-2s1.5 2 3 2 1.5-2 3-2 1.5 2 3 2 1.5-2 3-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- Textos -->
+          <div class="relative z-10">
+            <h3 class="font-serif font-normal text-2xl text-fog leading-tight mb-1">
+              A Névoa
+            </h3>
+            <p class="font-serif italic text-moon/60 text-base mb-5">
+              que conecta
+            </p>
+            <div class="card-divider mb-5" style="background: linear-gradient(90deg, rgba(212,232,154,0.5), transparent);" aria-hidden="true"></div>
+            <p class="font-sans font-light text-sm leading-[1.85] text-white/55">
+              Ela não apaga o caminho — ela o transforma. Na neblina,
+              cada passo torna-se intencional e cada presença essencial.
+              A névoa não separa; ela revela o que sempre esteve unido.
+            </p>
+          </div>
+
+          <!-- Tag inferior -->
+          <div class="relative z-10 mt-8 flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-moon/50"></span>
+            <span class="text-[0.65rem] tracking-[0.14em] uppercase text-white/30 font-medium">
+              Conexão
+            </span>
+          </div>
+        </article>
+
+
+        <!-- ════════ CARD 3 — Luar ════════ -->
+        <article
+          class="glass-card group
+                 rounded-2xl p-8
+                 bg-white/[0.04] backdrop-blur-md
+                 transition-all duration-500 ease-out
+                 hover:-translate-y-2
+                 hover:shadow-[0_16px_48px_rgba(61,218,132,0.12),_inset_0_1px_0_rgba(255,255,255,0.08)]"
+          style="animation: card-reveal 0.8s cubic-bezier(0.22,1,0.36,1) 0.40s both;"
+        >
+          <!-- Névoa interna -->
+          <div class="card-fog" aria-hidden="true"></div>
+
+          <!-- Ícone — Estrela/Luar -->
+          <div
+            class="card-icon relative z-10
+                   w-11 h-11 rounded-xl mb-7
+                   border border-firefly/20
+                   bg-firefly/[0.05]
+                   flex items-center justify-center"
+          >
+            <svg class="w-5 h-5 text-firefly" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M17.66 6.34l-1.41 1.41M4.93 19.07l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- Textos -->
+          <div class="relative z-10">
+            <h3 class="font-serif font-normal text-2xl text-fog leading-tight mb-1">
+              O Luar
+            </h3>
+            <p class="font-serif italic text-moon/60 text-base mb-5">
+              que guia
+            </p>
+            <div class="card-divider mb-5" aria-hidden="true"></div>
+            <p class="font-sans font-light text-sm leading-[1.85] text-white/55">
+              Não há sol aqui — apenas uma luz suave e perene que não
+              ofusca, mas ilumina com precisão o que precisa ser visto.
+              No escuro total, ela é suficiente para continuar.
+            </p>
+          </div>
+
+          <!-- Tag inferior -->
+          <div class="relative z-10 mt-8 flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-emerald-glow/60"></span>
+            <span class="text-[0.65rem] tracking-[0.14em] uppercase text-white/30 font-medium">
+              Direção
+            </span>
+          </div>
+        </article>
+
+      </div>
+      <!-- /grid -->
+
+    </div>
+
+    <!-- Separador luminoso no rodapé da seção -->
+    <div aria-hidden="true" class="pointer-events-none absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.05] to-transparent"></div>
+  </section>
+  <!-- /PILARES -->
+
+
+  <!-- ══════════════════════════════════════════════════════
+       MANIFESTO — O Respiro (Passo 4)
+  ══════════════════════════════════════════════════════ -->
+  <section
+    id="manifesto"
+    class="relative section-manifesto overflow-hidden
+           min-h-[65vh] flex flex-col items-center justify-center
+           px-6 py-24"
+  >
+    <!-- Separador de entrada -->
+    <div aria-hidden="true" class="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent"></div>
+
+    <!-- Vaga-lumes esparsos -->
+    <span aria-hidden="true" class="pointer-events-none absolute top-[25%] left-[8%]   w-1 h-1 rounded-full bg-firefly  shadow-[0_0_6px_#E8F569] animate-firefly-2 opacity-0"></span>
+    <span aria-hidden="true" class="pointer-events-none absolute top-[65%] right-[9%] w-1 h-1 rounded-full bg-moon      shadow-[0_0_6px_#D4E89A] animate-firefly-4 opacity-0"></span>
+    <span aria-hidden="true" class="pointer-events-none absolute top-[40%] left-[22%]  w-1 h-1 rounded-full bg-emerald-glow shadow-[0_0_6px_#3DDA84] animate-firefly-6 opacity-0"></span>
+
+    <div class="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center gap-8">
+
+      <!-- Ornamento — linha que cresce da esquerda -->
+      <div
+        class="manifesto-ornament h-px bg-gradient-to-r from-moon/50 to-transparent"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Aspas decorativas -->
+      <span
+        class="manifesto-quote font-serif text-[5rem] leading-none text-moon/15 select-none
+               -mb-12 -mt-4"
+        aria-hidden="true"
+      >"</span>
+
+      <!-- Citação principal -->
+      <blockquote class="manifesto-quote">
+        <p
+          class="font-serif italic font-normal leading-[1.25] tracking-tight
+                 text-4xl sm:text-5xl md:text-6xl
+                 text-white/80"
+        >
+          A verdadeira jornada<br />
+          começa quando<br />
+          <em class="text-moon/70 not-italic">a luz se apaga.</em>
+        </p>
+      </blockquote>
+
+      <!-- Autoria -->
+      <p class="manifesto-author font-sans font-light text-xs tracking-[0.18em] uppercase text-white/30 mt-2">
+        — Magical Night &nbsp;·&nbsp; Dreamcore
+      </p>
+
+      <!-- Ornamento inferior -->
+      <div
+        class="manifesto-ornament h-px bg-gradient-to-l from-moon/50 to-transparent"
+        aria-hidden="true"
+      ></div>
+
+    </div>
+
+    <!-- Degradê de saída para o footer -->
+    <div aria-hidden="true" class="pointer-events-none absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#060E10] to-transparent"></div>
+  </section>
+  <!-- /MANIFESTO -->
+
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER — Minimalista (Passo 4)
+  ══════════════════════════════════════════════════════ -->
+  <footer
+    id="site-footer"
+    class="relative z-10 bg-[#060E10]
+           border-t border-white/[0.05]
+           py-10 px-6 md:px-10"
+  >
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+
+      <!-- ── Esquerda: Logo ─────────────────────────── -->
+      <a
+        href="#hero"
+        class="logo-link flex items-center gap-2 no-underline group"
+        aria-label="Voltar ao topo"
+      >
+        <span
+          aria-hidden="true"
+          class="w-1 h-1 rounded-full bg-emerald-glow/50 shadow-[0_0_4px_#3DDA84]
+                 transition-all duration-300 group-hover:bg-emerald-glow group-hover:shadow-[0_0_8px_#3DDA84]"
+        ></span>
+        <span class="font-serif italic text-sm text-white/30 tracking-wide
+                     transition-all duration-300 group-hover:text-white/60">
+          Jornada
+        </span>
+      </a>
+
+      <!-- ── Centro: Copyright ──────────────────────── -->
+      <p class="font-sans font-light text-xs text-white/25 tracking-wide text-center order-last sm:order-none">
+        © 2026. Todos os direitos reservados.
+      </p>
+
+      <!-- ── Direita: Links sociais ─────────────────── -->
+      <nav aria-label="Redes sociais" class="flex items-center gap-5">
+
+        <!-- GitHub -->
+        <a
+          href="#"
+          class="footer-social text-white/30 no-underline"
+          aria-label="GitHub"
+          title="GitHub"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.09.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10Z"/>
+          </svg>
+        </a>
+
+        <!-- X / Twitter -->
+        <a
+          href="#"
+          class="footer-social text-white/30 no-underline"
+          aria-label="X (Twitter)"
+          title="X"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a
+          href="#"
+          class="footer-social text-white/30 no-underline"
+          aria-label="Instagram"
+          title="Instagram"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+
+      </nav>
+    </div>
+
+    <!-- Linha decorativa final — funde com o infinito -->
+    <div aria-hidden="true" class="mt-8 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent max-w-6xl mx-auto"></div>
+    <p class="mt-4 text-center font-sans text-[0.6rem] tracking-[0.2em] uppercase text-white/15">
+      Magical Night &nbsp;·&nbsp; Design System
+    </p>
+
+  </footer>
+  <!-- /FOOTER -->
+
+
+  <!-- ══════════════════════════════════════════════════════
+       SEÇÕES DE REFERÊNCIA DO PASSO 1
+       (mantidas abaixo para consulta dos tokens)
+  ══════════════════════════════════════════════════════ -->
+
+  <!-- TOKENS DE COR -->
+  <section class="section" id="tokens" style="border-top: 1px solid var(--color-border);">
+    <div class="container">
+      <p class="section-label">Design Tokens — Paleta</p>
+      <h2>Cores do Sistema</h2>
+      <div class="token-grid">
+        <div class="token-card"><div class="token-swatch" style="background:#0B1315;"></div><div class="token-info"><strong>--color-bg</strong><small>#0B1315</small><small>Background principal</small></div></div>
+        <div class="token-card"><div class="token-swatch" style="background:#121F23;"></div><div class="token-info"><strong>--color-surface</strong><small>#121F23</small><small>Cards / superfícies</small></div></div>
+        <div class="token-card"><div class="token-swatch" style="background:#E0E6E6;"></div><div class="token-info"><strong>--color-text</strong><small>#E0E6E6</small><small>Texto principal</small></div></div>
+        <div class="token-card"><div class="token-swatch" style="background:#8FA8A8;"></div><div class="token-info"><strong>--color-text-muted</strong><small>#8FA8A8</small><small>Texto secundário</small></div></div>
+        <div class="token-card"><div class="token-swatch" style="background:#3DDA84;"></div><div class="token-info"><strong>--color-emerald</strong><small>#3DDA84</small><small>Acento principal</small></div></div>
+        <div class="token-card"><div class="token-swatch" style="background:#D4E89A;"></div><div class="token-info"><strong>--color-moonlight</strong><small>#D4E89A</small><small>Luar / gradiente</small></div></div>
+        <div class="token-card"><div class="token-swatch" style="background:#E8F569;"></div><div class="token-info"><strong>--color-firefly</strong><small>#E8F569</small><small>Vaga-lumes</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPOGRAFIA -->
+  <section class="section" id="tipografia" style="border-top: 1px solid var(--color-border);">
+    <div class="container">
+      <p class="section-label">Design Tokens — Tipografia</p>
+      <h2>Escala Tipográfica</h2>
+      <div style="margin-top:2.5rem; display:flex; flex-direction:column; gap:2rem;">
+        <div><p class="text-muted" style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;">Playfair Display — h1</p><h1 style="-webkit-text-fill-color:var(--color-text);">A Floresta Noturna</h1></div>
+        <div><p class="text-muted" style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;">Playfair Display Italic — destaque</p><h1 style="-webkit-text-fill-color:var(--color-moonlight);"><em>Sob a Luz da Lua</em></h1></div>
+        <div><p class="text-muted" style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;">Inter 300 — corpo</p><p style="max-width:560px;font-size:1.05rem;color:var(--color-text-muted);">A luz da lua filtrava entre os galhos, desenhando sombras alongadas sobre o musgo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer style="border-top:1px solid var(--color-border);padding-block:2rem;text-align:center;position:relative;z-index:1;">
+    <p class="text-muted" style="font-size:.8rem;letter-spacing:.08em;">
+      Magical Night · Design System · Passo 2 — Hero Section
+    </p>
+  </footer>
+
+  <!-- ── Scripts consolidados ──────────────────────────────────── -->
+  <script>
+    (function () {
+
+      /* ── 1. Header: scroll → .scrolled ───────────────────────── */
+      var header   = document.getElementById('site-header');
+      var SCROLL_Y = 50;
+
+      function onScroll() {
+        if (window.scrollY > SCROLL_Y) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }
+
+      // Executa uma vez ao carregar (caso a página recarregue com scroll)
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+
+      /* ── 2. Menu mobile: hamburguer toggle ────────────────────── */
+      var toggle     = document.getElementById('menu-toggle');
+      var mobileMenu = document.getElementById('mobile-menu');
+      var bar1       = document.getElementById('bar1');
+      var bar2       = document.getElementById('bar2');
+      var bar3       = document.getElementById('bar3');
+      var menuOpen   = false;
+
+      toggle.addEventListener('click', function () {
+        menuOpen = !menuOpen;
+        toggle.setAttribute('aria-expanded', String(menuOpen));
+
+        if (menuOpen) {
+          // Abre: expande o max-height para o conteúdo real
+          mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+          // Anima as barras → X
+          bar1.style.transform  = 'translateY(6px) rotate(45deg)';
+          bar2.style.opacity    = '0';
+          bar3.style.transform  = 'translateY(-6px) rotate(-45deg)';
+          bar3.style.width      = '20px';
+          bar3.style.alignSelf  = 'unset';
+        } else {
+          // Fecha: colapsa
+          mobileMenu.style.maxHeight = '0';
+          bar1.style.transform  = '';
+          bar2.style.opacity    = '1';
+          bar3.style.transform  = '';
+          bar3.style.width      = '';
+          bar3.style.alignSelf  = '';
+        }
+      });
+
+      // Fecha o menu ao clicar em qualquer link dentro dele
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menuOpen = false;
+          toggle.setAttribute('aria-expanded', 'false');
+          mobileMenu.style.maxHeight = '0';
+          bar1.style.transform = bar3.style.transform = '';
+          bar2.style.opacity   = '1';
+          bar3.style.width = bar3.style.alignSelf = '';
+        });
+      });
+
+
+      /* ── 3. Cards: IntersectionObserver → card-reveal ────────── */
+      var cards = document.querySelectorAll('#pilares article');
+
+      cards.forEach(function (card) {
+        card.style.animationPlayState = 'paused';
+      });
+
+      var cardObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.style.animationPlayState = 'running';
+              cardObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      cards.forEach(function (card) { cardObserver.observe(card); });
+
+
+      /* ── 4. Manifesto: fade-in lento ao entrar na viewport ───── */
+      var manifestoEls = document.querySelectorAll(
+        '.manifesto-quote, .manifesto-ornament, .manifesto-author'
+      );
+
+      var manifestoObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              /*
+                Pequeno setTimeout para garantir que o browser
+                já pintou o frame inicial (opacity:0) antes de
+                acionar a transição — evita flash de conteúdo.
+              */
+              setTimeout(function () {
+                entry.target.classList.add('visible');
+              }, 60);
+              manifestoObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+
+      manifestoEls.forEach(function (el) { manifestoObserver.observe(el); });
+
+    })();
+  </script>
+
+</body>
+</html>
