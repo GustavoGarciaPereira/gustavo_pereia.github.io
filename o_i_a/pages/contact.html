@@ -2,21 +2,89 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <base href="../">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Referências e recursos para explorar a vida e a obra de Isaac Asimov: Wikipedia, Goodreads, Asimov Online e Internet Archive.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#070a0f">
+  <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://gustavogarciapereira.com.br/o_i_a/pages/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gustavogarciapereira.com.br/o_i_a/pages/contact.html">
+  <meta property="og:title" content="Referências & Recursos | Isaac Asimov">
+  <meta property="og:description" content="Referências e recursos para explorar a vida e a obra de Isaac Asimov.">
+  <meta property="og:image" content="https://gustavogarciapereira.com.br/o_i_a/assets/img/asimov.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Referências & Recursos | Isaac Asimov">
+  <meta name="twitter:description" content="Referências e recursos para explorar a vida e a obra de Isaac Asimov.">
+  <meta name="twitter:image" content="https://gustavogarciapereira.com.br/o_i_a/assets/img/asimov.jpg">
   <link rel="stylesheet" href="./assets/css/variables.css">
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="./assets/css/base.css">
   <link rel="stylesheet" href="./assets/css/layout.css">
   <link rel="stylesheet" href="./assets/css/components.css">
   <link rel="stylesheet" href="./assets/css/animations.css">
-  <title>Contact</title>
+  <title>Referências & Recursos | Isaac Asimov</title>
 </head>
 <body>
+  <!-- Navbar compartilhada (injetada via JS) -->
   <div id="navbar-slot"></div>
+
   <main id="app">
-    <h1>Contact</h1>
+    <!-- REFERÊNCIAS -->
+    <section class="section">
+      <div class="container">
+        <header class="page-hero">
+          <h1>Referências & Recursos</h1>
+          <p class="text-mono text-muted">Para continuar explorando a vida e a obra de Isaac Asimov</p>
+        </header>
+
+        <p class="page-lead">
+          Asimov deixou um legado vasto e bem documentado. Estes são alguns dos melhores lugares para conhecer
+          sua biografia, sua bibliografia e suas ideias — todos gratuitos e abertos.
+        </p>
+
+        <div class="ref-grid">
+          <a class="ref-card" href="https://en.wikipedia.org/wiki/Isaac_Asimov" target="_blank" rel="noopener">
+            <h3>Wikipedia</h3>
+            <p>Biografia completa, bibliografia detalhada e contexto histórico.</p>
+          </a>
+          <a class="ref-card" href="https://www.goodreads.com/author/show/16667.Isaac_Asimov" target="_blank" rel="noopener">
+            <h3>Goodreads</h3>
+            <p>Todas as obras catalogadas, com avaliações de leitores e resenhas.</p>
+          </a>
+          <a class="ref-card" href="https://www.asimovonline.com/" target="_blank" rel="noopener">
+            <h3>Asimov Online</h3>
+            <p>Site oficial mantido pela família, com biografia autorizada e curiosidades.</p>
+          </a>
+          <a class="ref-card" href="https://archive.org/search?query=isaac+asimov" target="_blank" rel="noopener">
+            <h3>Internet Archive</h3>
+            <p>Obras digitalizadas para leitura e empréstimo digital gratuito.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CITAÇÃO FINAL -->
+    <section class="section">
+      <div class="container">
+        <div class="about-quote">
+          <blockquote>
+            "A mudança — contínua, inevitável — é o fator dominante na sociedade de hoje."
+          </blockquote>
+          <cite>— Isaac Asimov, "My Own View"</cite>
+        </div>
+        <p class="text-mono text-muted" style="text-align:center; margin-top: var(--space-16);">
+          Este site é uma homenagem independente ao legado de Isaac Asimov.
+        </p>
+      </div>
+    </section>
   </main>
+
+  <!-- Footer compartilhado (injetado via JS) -->
   <div id="footer-slot"></div>
+
   <script type="module" src="./assets/js/main.js"></script>
 </body>
 </html>

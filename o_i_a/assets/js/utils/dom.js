@@ -9,12 +9,13 @@ export async function loadComponent(selector, file) {
   const el = document.querySelector(selector);
   if (!el) return;
   try {
-    const controller = new AbortController();
-    const res = await fetch(`/components/${file}`, { signal: controller.signal });
+    // Caminho relativo: resolve contra o <base href> do documento,
+    // funcionando tanto na raiz do site (/o_i_a/) quanto em subpastas (/o_i_a/pages/).
+    const res = await fetch(`./components/${file}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     el.innerHTML = await res.text();
   } catch (err) {
-    if (err.name !== 'AbortError') console.warn(`loadComponent(${file}):`, err);
+    console.warn(`loadComponent(${file}):`, err);
   }
 }
 

@@ -2,32 +2,39 @@
 import { initStarfield } from './utils/starfield.js';
 import { initCarousel } from './utils/carousel.js';
 import { initReveal, initParallax } from './utils/animations.js';
+import { loadComponent } from './utils/dom.js';
+import { initNavbar } from './components/navbar.js';
+import { initFooter } from './components/footer.js';
 
 async function bootstrap() {
-  // Inicializar estrelas animadas
+  // 1. Componentes compartilhados (navbar/footer)
+  //    Caminho relativo resolve contra o <base href> de cada página.
+  await Promise.all([
+    loadComponent('#navbar-slot', 'navbar.html'),
+    loadComponent('#footer-slot', 'footer.html'),
+  ]);
+
+  // 2. Inicializar componentes
+  initNavbar();
+  initFooter();
+
+  // 3. Efeitos de fundo e carousel
   initStarfield();
-  
-  // Inicializar carousel de citações
   initCarousel();
-  
-  // Inicializar scroll reveal
+
+  // 4. Scroll reveal — adicionar classes ANTES de inicializar os observers
+  document.querySelectorAll('.timeline-item, .law-card, .book-card, .legacy-stat')
+    .forEach((el) => el.classList.add('reveal'));
   initReveal();
-  
-  // Inicializar parallax sutil
   initParallax();
-  
-  // Adicionar classes de reveal para animação
-  document.querySelectorAll('.timeline-item, .law-card, .book-card, .legacy-stat').forEach((el, index) => {
-    el.classList.add('reveal');
-  });
-  
-  // Smooth scroll para links internos
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+
+  // 5. Smooth scroll para links internos
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
       e.preventDefault();
-      const targetId = this.getAttribute('href');
+      const targetId = anchor.getAttribute('href');
       if (targetId === '#') return;
-      
+
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         window.scrollTo({
@@ -37,15 +44,8 @@ async function bootstrap() {
       }
     });
   });
-  
-  // Adicionar ano atual no footer
-  const currentYear = new Date().getFullYear();
-  const footerMemorial = document.querySelector('.footer-memorial');
-  if (footerMemorial) {
-    footerMemorial.innerHTML += ` &copy; ${currentYear}`;
-  }
-  
-  // Adicionar classe para reduzir movimento se preferido
+
+  // 6. Marcar preferência por menos movimento (o starfield também respeita)
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.classList.add('reduced-motion');
   }

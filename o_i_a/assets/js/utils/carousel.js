@@ -3,91 +3,66 @@ export function initCarousel() {
   const carousel = document.querySelector('.quotes-carousel');
   if (!carousel) return;
 
-  const slides = carousel.querySelectorAll('.quote-slide');
-  const dots = carousel.querySelectorAll('.dot');
-  const prevBtn = carousel.querySelector('.carousel-btn.prev');
-  const nextBtn = carousel.querySelector('.carousel-btn.next');
-  
   let currentSlide = 0;
   let autoPlayInterval = null;
   const slideInterval = 5000; // 5 segundos
 
-  // Inicializar
-  function init() {
-    if (slides.length === 0) return;
-    
-    // Mostrar primeiro slide
-    showSlide(0);
-    
-    // Configurar autoplay
-    startAutoPlay();
-    
-    // Adicionar event listeners
-    if (prevBtn) prevBtn.addEventListener('click', showPrevSlide);
-    if (nextBtn) nextBtn.addEventListener('click', showNextSlide);
-    
-    // Adicionar event listeners para dots
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => showSlide(index));
-    });
-    
-    // Pausar autoplay no hover
-    carousel.addEventListener('mouseenter', pauseAutoPlay);
-    carousel.addEventListener('mouseleave', startAutoPlay);
-    
-    // Suporte a teclado
-    document.addEventListener('keydown', handleKeyboardNavigation);
-  }
+  // Consultas vivas: sempre refletem o DOM atual (slides/dots adicionados depois)
+  const getSlides = () => carousel.querySelectorAll('.quote-slide');
+  const getDots = () => carousel.querySelectorAll('.dot');
 
   // Mostrar slide específico
   function showSlide(index) {
-    // Validar índice
+    const slides = getSlides();
+    const dots = getDots();
+    if (!slides.length) return;
+
+    // Validar índice (loop infinito)
     if (index < 0) index = slides.length - 1;
     if (index >= slides.length) index = 0;
-    
+
     // Esconder todos os slides
     slides.forEach(slide => {
       slide.classList.remove('active');
       slide.style.animation = 'none';
       void slide.offsetWidth; // Trigger reflow
     });
-    
+
     // Remover classe active de todos os dots
     dots.forEach(dot => dot.classList.remove('active'));
-    
+
     // Mostrar slide atual
     slides[index].classList.add('active');
     slides[index].style.animation = 'fadeIn 0.5s ease';
-    
+
     // Atualizar dot atual
-    if (dots[index]) {
-      dots[index].classList.add('active');
-    }
-    
+    if (dots[index]) dots[index].classList.add('active');
+
     currentSlide = index;
-    
+
     // Disparar evento personalizado
     carousel.dispatchEvent(new CustomEvent('slideChange', {
       detail: { currentSlide: index }
     }));
   }
 
-  // Mostrar slide anterior
   function showPrevSlide() {
     showSlide(currentSlide - 1);
     resetAutoPlay();
   }
 
-  // Mostrar próximo slide
   function showNextSlide() {
     showSlide(currentSlide + 1);
     resetAutoPlay();
   }
 
-  // Iniciar autoplay
+  // Iniciar autoplay (nunca para quem prefere menos movimento —
+  // cobre também resetAutoPlay() e mouseleave)
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function startAutoPlay() {
+    if (reduceMotion) return;
     if (autoPlayInterval) clearInterval(autoPlayInterval);
-    
     autoPlayInterval = setInterval(() => {
       showNextSlide();
     }, slideInterval);
@@ -107,13 +82,13 @@ export function initCarousel() {
     startAutoPlay();
   }
 
-  // Navegação por teclado
+  // Navegação por teclado (dots são <button>, já ativados por Enter/Espaço nativamente)
   function handleKeyboardNavigation(e) {
     if (!carousel.matches(':hover') && !carousel.contains(document.activeElement)) {
       return;
     }
-    
-    switch(e.key) {
+
+    switch (e.key) {
       case 'ArrowLeft':
         e.preventDefault();
         showPrevSlide();
@@ -128,12 +103,16 @@ export function initCarousel() {
         break;
       case 'End':
         e.preventDefault();
-        showSlide(slides.length - 1);
+        showSlide(slidesLastIndex());
         break;
     }
   }
 
-  // Função para adicionar uma nova citação
+  function slidesLastIndex() {
+    return getSlides().length - 1;
+  }
+
+  // Adicionar uma nova citação (API pública)
   function addQuote(quote, source) {
     const newSlide = document.createElement('div');
     newSlide.className = 'quote-slide';
@@ -141,25 +120,41 @@ export function initCarousel() {
       <blockquote>${quote}</blockquote>
       <cite>— ${source}</cite>
     `;
-    
+
     carousel.insertBefore(newSlide, carousel.querySelector('.carousel-controls'));
-    
+
     // Atualizar dots
-    const newDot = document.createElement('span');
+    const newDot = document.createElement('button');
+    newDot.type = 'button';
     newDot.className = 'dot';
-    newDot.setAttribute('aria-label', `Citação ${slides.length + 1}`);
-    
+    newDot.setAttribute('aria-label', `Citação ${getSlides().length}`);
+
     const dotsContainer = carousel.querySelector('.carousel-dots');
     if (dotsContainer) {
-      dotsContainer.insertBefore(newDot, dotsContainer.lastElementChild);
+      dotsContainer.appendChild(newDot);
     }
-    
-    // Re-inicializar carousel
-    init();
+
+    // Ligar o dot ao novo slide (sem re-registrar os listeners globais)
+    const newIndex = getSlides().length - 1;
+    newDot.addEventListener('click', () => showSlide(newIndex));
   }
 
-  // Inicializar carousel
-  init();
+  // Registro único de listeners
+  const prevBtn = carousel.querySelector('.carousel-btn.prev');
+  const nextBtn = carousel.querySelector('.carousel-btn.next');
+  prevBtn?.addEventListener('click', showPrevSlide);
+  nextBtn?.addEventListener('click', showNextSlide);
+
+  getDots().forEach((dot, index) => {
+    dot.addEventListener('click', () => showSlide(index));
+  });
+
+  carousel.addEventListener('mouseenter', pauseAutoPlay);
+  carousel.addEventListener('mouseleave', startAutoPlay);
+  document.addEventListener('keydown', handleKeyboardNavigation);
+
+  showSlide(0);
+  startAutoPlay();
 
   // Retornar API pública
   return {
@@ -170,6 +165,6 @@ export function initCarousel() {
     pauseAutoPlay,
     startAutoPlay,
     getCurrentSlide: () => currentSlide,
-    getTotalSlides: () => slides.length
+    getTotalSlides: () => getSlides().length
   };
 }

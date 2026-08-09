@@ -7,11 +7,22 @@ export function initNavbar() {
 
   /* Mobile toggle */
   const toggle = $('.navbar__toggle');
-  const links  = $('.navbar__links');
   toggle?.addEventListener('click', () => {
-    const open = links.style.display === 'flex';
-    links.style.display = open ? 'none' : 'flex';
-    links.style.flexDirection = 'column';
+    const isOpen = navbar.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.textContent = isOpen ? '✕' : '☰';
+    toggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+  });
+
+  /* Fechar menu mobile ao navegar (sincroniza estado ARIA) */
+  navbar.addEventListener('click', (e) => {
+    if (!e.target.closest('a')) return;
+    navbar.classList.remove('open');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = '☰';
+      toggle.setAttribute('aria-label', 'Abrir menu');
+    }
   });
 
   /* Scroll shadow */

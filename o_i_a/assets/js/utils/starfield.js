@@ -4,6 +4,8 @@ export function initStarfield() {
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   let stars = [];
   let particles = [];
   let animationId = null;
@@ -19,11 +21,14 @@ export function initStarfield() {
     particleColors: ['#00d4ff', '#f5a623', '#6366f1']
   };
 
+  // Bounds lógicos em unidades CSS (independentes do devicePixelRatio)
+  const bounds = { w: window.innerWidth, h: window.innerHeight };
+
   // Classe Star
   class Star {
     constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
+      this.x = Math.random() * bounds.w;
+      this.y = Math.random() * bounds.h;
       this.size = Math.random() * 1.5 + 0.5;
       this.speed = Math.random() * config.starSpeed + 0.1;
       this.color = config.starColors[Math.floor(Math.random() * config.starColors.length)];
@@ -37,10 +42,10 @@ export function initStarfield() {
       this.y += Math.sin(this.direction) * this.speed;
 
       // Wrap around edges
-      if (this.x < 0) this.x = canvas.width;
-      if (this.x > canvas.width) this.x = 0;
-      if (this.y < 0) this.y = canvas.height;
-      if (this.y > canvas.height) this.y = 0;
+      if (this.x < 0) this.x = bounds.w;
+      if (this.x > bounds.w) this.x = 0;
+      if (this.y < 0) this.y = bounds.h;
+      if (this.y > bounds.h) this.y = 0;
 
       // Pulsação sutil
       this.opacity = 0.3 + Math.sin(Date.now() * 0.001 + this.x) * 0.2;
@@ -59,8 +64,8 @@ export function initStarfield() {
   // Classe Particle
   class Particle {
     constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
+      this.x = Math.random() * bounds.w;
+      this.y = Math.random() * bounds.h;
       this.size = Math.random() * 2 + 1;
       this.speed = Math.random() * config.particleSpeed + 0.2;
       this.color = config.particleColors[Math.floor(Math.random() * config.particleColors.length)];
@@ -75,10 +80,10 @@ export function initStarfield() {
       this.y += Math.sin(this.direction) * this.speed + Math.cos(Date.now() * this.wobble) * 0.5;
 
       // Wrap around edges
-      if (this.x < 0) this.x = canvas.width;
-      if (this.x > canvas.width) this.x = 0;
-      if (this.y < 0) this.y = canvas.height;
-      if (this.y > canvas.height) this.y = 0;
+      if (this.x < 0) this.x = bounds.w;
+      if (this.x > bounds.w) this.x = 0;
+      if (this.y < 0) this.y = bounds.h;
+      if (this.y > bounds.h) this.y = 0;
 
       // Opacidade variável
       this.opacity = 0.1 + Math.sin(Date.now() * 0.002 + this.x * 0.01) * 0.2;
@@ -109,10 +114,14 @@ export function initStarfield() {
     }
   }
 
-  // Redimensionar canvas
+  // Redimensionar canvas (com suporte a telas retina via devicePixelRatio)
   function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    bounds.w = window.innerWidth;
+    bounds.h = window.innerHeight;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = bounds.w * dpr;
+    canvas.height = bounds.h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
   // Desenhar conexões entre estrelas próximas
@@ -136,50 +145,51 @@ export function initStarfield() {
     }
   }
 
+  // Desenhar um único frame (posições atuais, sem avanço de estado)
+  function drawFrame() {
+    ctx.clearRect(0, 0, bounds.w, bounds.h);
+    stars.forEach(star => star.draw());
+    particles.forEach(particle => particle.draw());
+    drawConnections();
+  }
+
   // Loop de animação
   function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Atualizar e desenhar estrelas
-    stars.forEach(star => {
-      star.update();
-      star.draw();
-    });
-
-    // Atualizar e desenhar partículas
-    particles.forEach(particle => {
-      particle.update();
-      particle.draw();
-    });
-
-    // Desenhar conexões
-    drawConnections();
-
+    stars.forEach(star => star.update());
+    particles.forEach(particle => particle.update());
+    drawFrame();
     animationId = requestAnimationFrame(animate);
   }
 
-  // Inicializar e começar animação
-  init();
-  animate();
-
-  // Redimensionar quando a janela mudar de tamanho
-  window.addEventListener('resize', () => {
+  const handleResize = () => {
     resizeCanvas();
     init();
-  });
+    // Em reduced-motion não há loop: redesenhar o frame estático
+    if (reduceMotion) drawFrame();
+  };
 
-  // Limpar animação quando a página for descarregada
-  window.addEventListener('beforeunload', () => {
-    if (animationId) {
-      cancelAnimationFrame(animationId);
-    }
-  });
+  const handleBeforeUnload = () => {
+    if (animationId) cancelAnimationFrame(animationId);
+  };
+
+  // Inicializar e começar animação
+  init();
+
+  if (reduceMotion) {
+    // Sem loop de animação: desenha um frame estático respeitando a preferência
+    drawFrame();
+  } else {
+    animate();
+  }
+
+  // Redimensionar quando a janela mudar de tamanho
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('beforeunload', handleBeforeUnload);
 
   // Retornar função de limpeza
   return () => {
-    if (animationId) {
-      cancelAnimationFrame(animationId);
-    }
-    window.removeEventListener('resize', resizeCanvas);
+    if (animationId) cancelAnimationFrame(animationId);
+    window.removeEventListener('resize', handleResize);
+    window.removeEventListener('beforeunload', handleBeforeUnload);
   };
 }

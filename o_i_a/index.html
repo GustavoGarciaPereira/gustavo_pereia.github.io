@@ -2,8 +2,23 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <base href="./">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Homenagem a Isaac Asimov — escritor, bioquímico e um dos maiores nomes da ficção científica de todos os tempos.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#070a0f">
+  <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://gustavogarciapereira.com.br/o_i_a/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gustavogarciapereira.com.br/o_i_a/">
+  <meta property="og:title" content="Isaac Asimov — O Visionário da Ficção Científica">
+  <meta property="og:description" content="Homenagem a Isaac Asimov: linha do tempo, as Três Leis da Robótica, obras essenciais e citações marcantes.">
+  <meta property="og:image" content="https://gustavogarciapereira.com.br/o_i_a/assets/img/asimov.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Isaac Asimov — O Visionário da Ficção Científica">
+  <meta name="twitter:description" content="Homenagem a Isaac Asimov: linha do tempo, as Três Leis da Robótica, obras essenciais e citações marcantes.">
+  <meta name="twitter:image" content="https://gustavogarciapereira.com.br/o_i_a/assets/img/asimov.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -16,6 +31,9 @@
   <title>Isaac Asimov — O Visionário da Ficção Científica</title>
 </head>
 <body>
+  <!-- Navbar compartilhada (injetada via JS) -->
+  <div id="navbar-slot"></div>
+
   <!-- Canvas para estrelas animadas -->
   <canvas id="starfield" class="starfield-canvas"></canvas>
 
@@ -189,9 +207,9 @@
           <div class="carousel-controls">
             <button class="carousel-btn prev" aria-label="Citação anterior">‹</button>
             <div class="carousel-dots">
-              <span class="dot active"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
+              <button type="button" class="dot active" aria-label="Citação 1"></button>
+              <button type="button" class="dot" aria-label="Citação 2"></button>
+              <button type="button" class="dot" aria-label="Citação 3"></button>
             </div>
             <button class="carousel-btn next" aria-label="Próxima citação">›</button>
           </div>
@@ -209,8 +227,8 @@
             <p class="stat-label">Livros e artigos publicados</p>
           </div>
           <div class="legacy-stat">
-            <div class="stat-number">17</div>
-            <p class="stat-label">Livros de não-ficção científica</p>
+            <div class="stat-number">~400</div>
+            <p class="stat-label">Colunas mensais de divulgação científica</p>
           </div>
           <div class="legacy-stat">
             <div class="stat-number">50+</div>
